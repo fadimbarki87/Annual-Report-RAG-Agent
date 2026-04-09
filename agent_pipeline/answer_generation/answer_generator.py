@@ -48,11 +48,13 @@ Reporting Period
 Resources
 - Ordered by appearance in the answer.
 - Include company, source file, and page number.
+- Use one line per resource in the format: - Company, source_file.pdf, page 123
 
 Evidence
 - Exact text copied from the retrieved evidence.
 - Include only evidence used in the answer.
 - Do not paraphrase evidence.
+- Use one line per evidence item in the format: - "Exact quote" (Company, source_file.pdf, page 123)
 """
 
 

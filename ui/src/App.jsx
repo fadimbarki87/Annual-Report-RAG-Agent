@@ -61,7 +61,12 @@ function formatResource(resource) {
     pieces.push(`p. ${pageValue}`)
   }
 
-  return pieces.filter(Boolean).join(' | ')
+  const formatted = pieces.filter(Boolean).join(' | ')
+  if (formatted) {
+    return formatted
+  }
+
+  return extractText(resource.raw || resource.text || resource.content)
 }
 
 function formatEvidenceItem(item) {
@@ -73,12 +78,12 @@ function formatEvidenceItem(item) {
     return ''
   }
 
-  const text = extractText(item.text || item.evidence || item.content)
+  const text = extractText(item.text || item.evidence || item.content || item.raw)
   if (!text) {
     return ''
   }
 
-  const sourceParts = [item.company, item.source_file]
+  const sourceParts = [item.company, item.source_file || item.sourceFile]
   const pageValue = item.page_number ?? item.pageNumber
   if (pageValue !== undefined && pageValue !== null && pageValue !== '') {
     sourceParts.push(`p. ${pageValue}`)
