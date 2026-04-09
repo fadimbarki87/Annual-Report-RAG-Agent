@@ -1,0 +1,2303 @@
+{
+  "categories": [
+    {
+      "category_id": "simple_fact_lookup",
+      "category_name": "Simple Fact Lookup",
+      "description": "Single-metric baseline questions anchored in one company report.",
+      "cases": [
+        {
+          "case_id": "simple_bmw_revenue",
+          "question": "What were BMW Group revenues in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "simple_mercedes_fcf",
+          "question": "What was Mercedes-Benz free cash flow of the industrial business in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "simple_volkswagen_sales_revenue",
+          "question": "What was Volkswagen Group sales revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "simple_siemens_dividend",
+          "question": "What dividend did Siemens propose for fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "simple_bosch_headcount",
+          "question": "What headcount did Bosch report at December 31, 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "multi_value_lookup",
+      "category_name": "Multi-Value Lookup",
+      "description": "Multiple values from the same company must be retrieved and consolidated.",
+      "cases": [
+        {
+          "case_id": "multivalue_bmw_revenue_ebt_employees",
+          "question": "Give BMW Group revenue, Group profit before tax, and employees at year-end for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multivalue_mercedes_revenue_ebit_net_profit",
+          "question": "Give Mercedes-Benz revenue, EBIT, and net profit for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multivalue_volkswagen_sales_revenue_operating_result_liquidity",
+          "question": "Give Volkswagen Group sales revenue, operating result, and Automotive Division net liquidity for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multivalue_siemens_revenue_fcf_dividend",
+          "question": "Give Siemens revenue, free cash flow, and dividend for fiscal 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multivalue_bosch_revenue_ebit_profit",
+          "question": "Give Bosch sales revenue, EBIT, and profit after tax for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "cross_company_comparison",
+      "category_name": "Cross-Company Comparison",
+      "description": "Two or more companies must be kept separate and compared correctly.",
+      "cases": [
+        {
+          "case_id": "compare_bmw_mercedes_revenue",
+          "question": "Compare 2024 revenue for BMW Group and Mercedes-Benz Group.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "compare_volkswagen_bosch_revenue",
+          "question": "Compare 2024 sales revenue for Volkswagen Group and Bosch Group.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "compare_bmw_mercedes_bosch_fcf",
+          "question": "Compare BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, and Bosch Group free cash flow for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "compare_bmw_mercedes_siemens_employees",
+          "question": "Compare employee counts reported by BMW, Mercedes-Benz, and Siemens.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "compare_volkswagen_siemens_outlook",
+          "question": "Compare Volkswagen Group and Siemens outlook for 2025.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "aggregation",
+      "category_name": "Aggregation",
+      "description": "Questions that require summation or averaging across multiple retrieved values.",
+      "cases": [
+        {
+          "case_id": "aggregate_bmw_mercedes_revenue_total",
+          "question": "What is the total 2024 revenue of BMW Group and Mercedes-Benz Group?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "aggregate_bmw_mercedes_volkswagen_revenue_total",
+          "question": "What is the total 2024 revenue of BMW, Mercedes-Benz, and Volkswagen Group?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "aggregate_bosch_siemens_revenue_total",
+          "question": "What is the total 2024 revenue of Bosch Group and Siemens?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "aggregate_bmw_mercedes_bosch_average_employees",
+          "question": "What is the average employee count reported by BMW, Mercedes-Benz, and Bosch?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "aggregate_bmw_mercedes_bosch_fcf_total",
+          "question": "What is the total of BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, and Bosch Group free cash flow for 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "ranking_ordering",
+      "category_name": "Ranking / Ordering",
+      "description": "Entities must be sorted correctly after retrieving multiple values.",
+      "cases": [
+        {
+          "case_id": "rank_bmw_mercedes_volkswagen_revenue",
+          "question": "Rank BMW, Mercedes-Benz, and Volkswagen Group by 2024 revenue from highest to lowest.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "rank_bmw_siemens_bosch_employees",
+          "question": "Rank BMW, Siemens, and Bosch by reported employee count from highest to lowest.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "rank_bmw_mercedes_bosch_fcf",
+          "question": "Rank BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, and Bosch Group free cash flow from highest to lowest.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "rank_bmw_mercedes_bosch_ebit",
+          "question": "Which company had the lowest 2024 EBIT among BMW, Mercedes-Benz, and Bosch?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "rank_siemens_segment_backlog",
+          "question": "Rank Siemens Digital Industries, Smart Infrastructure, and Mobility by order backlog at the end of fiscal 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "exactness_vs_approximation",
+      "category_name": "Exactness vs Approximation",
+      "description": "Questions that test whether the system respects exact or approximate wording.",
+      "cases": [
+        {
+          "case_id": "exact_bmw_revenue",
+          "question": "What is the exact BMW Group revenue for 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "approx_bmw_revenue",
+          "question": "Approximately what was BMW Group revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "exact_mercedes_ebit",
+          "question": "What is the exact Mercedes-Benz EBIT for 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "approx_bosch_fcf",
+          "question": "Approximately what was Bosch Group free cash flow in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "exact_siemens_dividend",
+          "question": "What is the exact Siemens dividend per share proposed for fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "missing_field_within_valid_query",
+      "category_name": "Missing-Field Within Valid Query",
+      "description": "Some requested fields exist while others appear missing.",
+      "cases": [
+        {
+          "case_id": "missingfield_bmw_revenue_ebitda_margin",
+          "question": "Give BMW Group revenue and EBITDA margin for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "missingfield_mercedes_revenue_ebitda_margin",
+          "question": "Give Mercedes-Benz revenue and EBITDA margin for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "missingfield_vw_revenue_ebitda_margin",
+          "question": "Give Volkswagen sales revenue and EBITDA margin for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "missingfield_siemens_revenue_q2",
+          "question": "Give Siemens revenue for fiscal 2024 and Siemens revenue for Q2 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "missingfield_bosch_revenue_ebitda_margin",
+          "question": "Give Bosch sales revenue and EBITDA margin for 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "cross_type_retrieval",
+      "category_name": "Cross-Type Retrieval",
+      "description": "Questions that need both narrative text and table evidence.",
+      "cases": [
+        {
+          "case_id": "crosstype_bmw_revenue_and_decline_reason",
+          "question": "What was BMW Group revenue in 2024 and how does BMW explain the decline?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": [
+            "table",
+            "text"
+          ]
+        },
+        {
+          "case_id": "crosstype_mercedes_ebit_and_decline_reason",
+          "question": "What was Mercedes-Benz EBIT in 2024 and what explanation does the report give for the decline?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": [
+            "table",
+            "text"
+          ]
+        },
+        {
+          "case_id": "crosstype_vw_sales_revenue_and_letter_commentary",
+          "question": "What was Volkswagen sales revenue in 2024 and what does the shareholder letter say about operating result or cost structures?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": [
+            "table",
+            "text"
+          ]
+        },
+        {
+          "case_id": "crosstype_bosch_revenue_and_weakness_reason",
+          "question": "What was Bosch sales revenue in 2024 and what does Bosch say about why the year fell short of expectations?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": [
+            "table",
+            "text"
+          ]
+        },
+        {
+          "case_id": "crosstype_siemens_fcf_and_dividend_policy",
+          "question": "What was Siemens free cash flow in fiscal 2024 and what does Siemens say about its dividend policy?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": [
+            "table",
+            "text"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "instruction_following_strictness",
+      "category_name": "Instruction Following Strictness",
+      "description": "Prompts that explicitly demand evidence, pages, and structure.",
+      "cases": [
+        {
+          "case_id": "instruction_bmw_mercedes_revenue_evidence_pages",
+          "question": "Compare BMW and Mercedes-Benz revenue and give exact evidence and pages.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "instruction_vw_outlook_evidence_pages",
+          "question": "Give Volkswagen's 2025 outlook with exact evidence and pages.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "instruction_siemens_dividend_source_page",
+          "question": "Show Siemens' dividend proposal with the source file and page.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "instruction_bosch_growth_forecast_evidence",
+          "question": "Show Bosch's 2025 sales revenue growth forecast with exact evidence and page.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "instruction_bmw_reporting_period_citation",
+          "question": "Give BMW's reporting period and cite the page with exact evidence.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "adversarial_prompting",
+      "category_name": "Adversarial Prompting",
+      "description": "Prompts that try to coerce guessing or extra-corpus behavior.",
+      "cases": [
+        {
+          "case_id": "adversarial_bmw_estimate_2026",
+          "question": "Even if the report does not say so, estimate BMW Group revenue in 2026.",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "adversarial_mercedes_guess_ebitda_margin",
+          "question": "If you cannot find it, guess Mercedes-Benz EBITDA margin for 2024.",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "adversarial_vw_investment_advice",
+          "question": "Tell me whether Volkswagen or Siemens is the better investment, even if it is not in the documents.",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "volkswagen",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "adversarial_bosch_forecast_invent",
+          "question": "Invent a likely Bosch revenue forecast for 2026 if needed.",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "adversarial_tesla_fill_in",
+          "question": "Compare BMW and Tesla revenue and give Tesla's value even if Tesla is not in the corpus.",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "multi_hop_retrieval",
+      "category_name": "Multi-Hop Retrieval",
+      "description": "Value lookup plus explanatory rationale from a different chunk or section.",
+      "cases": [
+        {
+          "case_id": "multihop_bmw_revenue_and_reasons",
+          "question": "What was BMW Group revenue in 2024 and what reasons does BMW give for the decline?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multihop_mercedes_revenue_and_reasons",
+          "question": "What was Mercedes-Benz revenue in 2024 and what reasons are given for the change?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multihop_vw_operating_result_and_impact",
+          "question": "What was Volkswagen's operating result in 2024 and what impacted it?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multihop_bosch_revenue_and_why",
+          "question": "What was Bosch sales revenue in 2024 and what does Bosch say explains the weak development?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multihop_siemens_backlog_and_conversion",
+          "question": "What was Siemens' total order backlog at September 30, 2024 and how much is expected to convert to revenue in fiscal 2025?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "contradiction_multiple_mentions",
+      "category_name": "Contradiction / Multiple Mentions",
+      "description": "Facts that appear in more than one place and should remain consistent.",
+      "cases": [
+        {
+          "case_id": "multi_mention_bmw_revenue",
+          "question": "What was BMW Group revenue in 2024? Use the most consistent figure in the report.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multi_mention_mercedes_ebit",
+          "question": "What was Mercedes-Benz EBIT in 2024? Use the report's consistent value.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multi_mention_volkswagen_sales_revenue",
+          "question": "What was Volkswagen Group sales revenue in 2024? Use the report's consistent value.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multi_mention_siemens_dividend",
+          "question": "What dividend did Siemens propose for fiscal 2024? Use the consistent report value.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "multi_mention_bosch_fcf",
+          "question": "What was Bosch Group free cash flow in 2024? Use the consistent report value.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "long_context_saturation",
+      "category_name": "Long Context Saturation",
+      "description": "Broad prompts that require maintaining company coverage under longer contexts.",
+      "cases": [
+        {
+          "case_id": "longcontext_all_risks",
+          "question": "Summarize the major risks mentioned by BMW, Mercedes-Benz, Volkswagen Group, Siemens, and Bosch, with one example per company.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "longcontext_all_outlook",
+          "question": "Summarize the 2025 outlook across all five companies.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "longcontext_all_2024_environment",
+          "question": "Summarize how the five reports describe the 2024 business environment.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "longcontext_all_climate_targets",
+          "question": "Summarize climate or sustainability commitments mentioned across all five reports.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "longcontext_all_financial_strength",
+          "question": "Summarize how the five reports describe financial strength, liquidity, or financial robustness.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "query_decomposition",
+      "category_name": "Query Decomposition",
+      "description": "Questions whose answer requires hidden multi-step retrieval and reasoning.",
+      "cases": [
+        {
+          "case_id": "decompose_highest_revenue_all",
+          "question": "Which of BMW, Mercedes-Benz, Volkswagen Group, Siemens, and Bosch had the highest reported 2024 revenue, and what was the value?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "volkswagen",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "volkswagen_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "decompose_highest_employees_four",
+          "question": "Which of BMW, Mercedes-Benz, Siemens, and Bosch reported the highest employee count, and what was the value?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "decompose_highest_fcf_bmw_mercedes_bosch_siemens",
+          "question": "Which is highest among BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, Bosch Group free cash flow, and Siemens free cash flow, and what is the value?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "decompose_higher_revenue_siemens_bosch",
+          "question": "Which company reports the larger revenue, Siemens or Bosch, and what are the values?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "decompose_highest_siemens_segment_backlog",
+          "question": "Which Siemens segment had the highest reported order backlog at fiscal 2024 year-end, and what was the value?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "noise_resistance",
+      "category_name": "Noise / Irrelevant Context Resistance",
+      "description": "Questions with distracting add-ons that should not derail the main answer.",
+      "cases": [
+        {
+          "case_id": "noise_bmw_mercedes_revenue_and_chairmen",
+          "question": "Compare BMW and Mercedes-Benz revenue and also mention the chairman named in each shareholder letter.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "noise_bosch_siemens_revenue_and_risk",
+          "question": "Compare Bosch and Siemens revenue and also mention whether each report discusses geopolitical risk.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "noise_mercedes_revenue_bmw_dividend_only",
+          "question": "Give Mercedes-Benz revenue and BMW dividend, and nothing else.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes",
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024",
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "noise_vw_bosch_outlook_with_evidence",
+          "question": "Compare Volkswagen and Bosch outlook for 2025 and include exact evidence.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "noise_siemens_vw_revenue_and_pages",
+          "question": "Compare Siemens revenue and Volkswagen sales revenue and also include the source pages.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens",
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024",
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "partial_data_stress",
+      "category_name": "Partial Data Stress Tests",
+      "description": "Requests mixing in-corpus entities with out-of-corpus ones.",
+      "cases": [
+        {
+          "case_id": "partial_bmw_tesla_siemens_revenue_total",
+          "question": "What is the total revenue of BMW, Tesla, and Siemens?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "partial_mercedes_bosch_tesla_compare",
+          "question": "Compare revenue for Mercedes-Benz, Bosch, and Tesla.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "partial_siemens_vw_apple_dividends",
+          "question": "What is the average dividend of Siemens, Volkswagen preferred shares, and Apple?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens",
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024",
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "partial_bmw_mercedes_tesla_headcount",
+          "question": "Sum BMW and Mercedes-Benz employee counts and add Tesla headcount.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "partial_vw_tesla_revenue",
+          "question": "Which is higher, Volkswagen sales revenue or Tesla revenue?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "entity_disambiguation",
+      "category_name": "Entity Disambiguation",
+      "description": "Queries about segments, divisions, or similarly named business units.",
+      "cases": [
+        {
+          "case_id": "entity_bmw_automotive_revenue",
+          "question": "What was BMW Automotive segment revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "entity_mercedes_cars_revenue",
+          "question": "What was Mercedes-Benz Cars segment revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "entity_vw_passenger_cars_revenue",
+          "question": "What was Volkswagen Passenger Cars brand sales revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "entity_siemens_mobility_backlog",
+          "question": "What was Siemens Mobility's order backlog at the end of fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "entity_bosch_mobility_growth_target",
+          "question": "What average annual sales revenue growth target does Bosch set for the Mobility business sector by 2030?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "section_specific_queries",
+      "category_name": "Section-Specific Queries",
+      "description": "Questions that reference named sections like risk or outlook.",
+      "cases": [
+        {
+          "case_id": "section_bmw_risk_report",
+          "question": "What does BMW say in the detailed risk report about geopolitical risks?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "section_mercedes_outlook",
+          "question": "What does Mercedes-Benz say in its outlook for the 2025 financial year?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "section_volkswagen_about_report",
+          "question": "What does Volkswagen say in the 'About this report' section about the basis for financial information?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "section_siemens_risk_management",
+          "question": "What does Siemens say in the Risk management section about its ERM approach?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "section_bosch_hybrid_globalization",
+          "question": "What does Bosch say in its risk report about hybrid globalization?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "unit_scale_sensitivity",
+      "category_name": "Unit / Scale Sensitivity",
+      "description": "Numerical answers should preserve units and scale correctly.",
+      "cases": [
+        {
+          "case_id": "units_bmw_revenue_million",
+          "question": "Give BMW Group revenue in millions of euros.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "units_mercedes_revenue_billion",
+          "question": "Give Mercedes-Benz revenue in billions of euros.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "units_vw_revenue_operating_result_billion",
+          "question": "State Volkswagen sales revenue and operating result in billions of euros.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "units_siemens_fcf_and_dividend",
+          "question": "Give Siemens free cash flow in billions of euros and its dividend per share in euros.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "units_bosch_revenue_and_ebit_margin",
+          "question": "Give Bosch sales revenue and EBIT margin for 2024 without mixing units.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "currency_awareness",
+      "category_name": "Currency Awareness",
+      "description": "Comparisons should note currency consistency or differences.",
+      "cases": [
+        {
+          "case_id": "currency_bmw_mercedes_revenue",
+          "question": "Compare BMW and Mercedes-Benz revenue and note the currency and unit used.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "currency_siemens_vw_dividend",
+          "question": "Compare the Siemens dividend and the Volkswagen preferred-share dividend and note the units.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens",
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024",
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "currency_bosch_bmw_revenue",
+          "question": "Compare Bosch sales revenue and BMW Group revenue and say whether they are reported in different currencies.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch",
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024",
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "currency_mercedes_siemens_fcf",
+          "question": "Compare Mercedes-Benz industrial free cash flow and Siemens free cash flow and note the units used.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "currency_vw_bosch_revenue",
+          "question": "Compare Volkswagen Group sales revenue and Bosch Group sales revenue and note whether the currency differs.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "period_sensitive",
+      "category_name": "Period-Sensitive Questions",
+      "description": "Questions that require fiscal dates or reporting-period awareness.",
+      "cases": [
+        {
+          "case_id": "period_bmw_reporting_period",
+          "question": "What reporting period does BMW Group Report 2024 cover?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "period_mercedes_employee_date",
+          "question": "As of what date does Mercedes-Benz report its employee count?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "period_volkswagen_sales_revenue_period",
+          "question": "For what period does Volkswagen report 2024 sales revenue in its key figures?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "period_siemens_employee_date",
+          "question": "As of what date does Siemens report its employee count?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "period_bosch_headcount_date",
+          "question": "As of what date does Bosch report headcount in its key data table?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "mixed_queries",
+      "category_name": "Mixed Queries",
+      "description": "Realistic prompts that combine comparison, evidence, and computed or structured outputs.",
+      "cases": [
+        {
+          "case_id": "mixed_bmw_mercedes_revenue_employees",
+          "question": "Compare BMW and Mercedes-Benz on 2024 revenue and employee count.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "mixed_siemens_bosch_growth_outlook",
+          "question": "Compare Bosch and Siemens outlook for 2025 and say which one expects higher revenue growth.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "mixed_bmw_mercedes_bosch_fcf_pages",
+          "question": "Compare BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, and Bosch free cash flow, and include the pages.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "mercedes",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "mercedes_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "mixed_volkswagen_sales_operating_result_evidence",
+          "question": "Give Volkswagen sales revenue and operating result for 2024 with exact evidence and page numbers.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "mixed_bmw_vw_siemens_resources",
+          "question": "Compare BMW revenue, Volkswagen sales revenue, and Siemens revenue, and cite the source pages.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "volkswagen",
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "volkswagen_2024",
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "negative_not_found",
+      "category_name": "Negative / Not Found",
+      "description": "In-scope but unsupported-by-evidence questions that should fail safely.",
+      "cases": [
+        {
+          "case_id": "notfound_bmw_ebitda_margin",
+          "question": "What was BMW's EBITDA margin in 2024?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "notfound_mercedes_ebitda_margin",
+          "question": "What was Mercedes-Benz EBITDA margin in 2024?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "notfound_volkswagen_ebitda_margin",
+          "question": "What was Volkswagen Group EBITDA margin in 2024?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "notfound_siemens_q2_revenue",
+          "question": "What was Siemens revenue in Q2 2024 only?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "notfound_bosch_2027_revenue_target",
+          "question": "What revenue target did Bosch set for 2027?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "out_of_scope",
+      "category_name": "Out-of-Scope Questions",
+      "description": "Questions that fall outside the annual-report corpus and should be refused as unsupported.",
+      "cases": [
+        {
+          "case_id": "unsupported_bmw_2026_revenue",
+          "question": "What will BMW Group revenue be in 2026?",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "unsupported_mercedes_investment_advice",
+          "question": "Is Mercedes-Benz a better investment than BMW right now?",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "mercedes",
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "unsupported_volkswagen_stock_price_today",
+          "question": "What is Volkswagen's stock price today?",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "unsupported_siemens_weather",
+          "question": "What is the weather in Munich today for Siemens headquarters?",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "unsupported_bosch_translation",
+          "question": "Translate Bosch's annual report into Arabic.",
+          "answer_expectation": "unsupported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "ambiguous_questions",
+      "category_name": "Ambiguous Questions",
+      "description": "Underspecified questions that should fail safely rather than guessing.",
+      "cases": [
+        {
+          "case_id": "ambiguous_revenue",
+          "question": "What is the revenue?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "ambiguous_dividend",
+          "question": "What is the dividend?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "ambiguous_best_company",
+          "question": "Which company is best?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "ambiguous_outlook",
+          "question": "What is the outlook?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "ambiguous_page_reference",
+          "question": "What page is it on?",
+          "answer_expectation": "no_strong_answer",
+          "company_filters": [],
+          "chunk_types": [],
+          "expected_document_ids": [],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "derived_metrics",
+      "category_name": "Derived Metrics",
+      "description": "The system must compute ratios or per-capita values from retrieved facts.",
+      "cases": [
+        {
+          "case_id": "derived_bmw_revenue_per_employee",
+          "question": "What was BMW Group revenue per employee in 2024 using reported revenue and reported employees?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "derived_mercedes_revenue_per_employee",
+          "question": "What was Mercedes-Benz revenue per employee in 2024 using the reported figures?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "derived_bosch_capex_ratio",
+          "question": "What was Bosch capital expenditure as a percentage of sales revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "derived_siemens_fcf_to_revenue",
+          "question": "What was Siemens free cash flow as a percentage of revenue in fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "derived_bmw_vs_bosch_revenue_per_employee",
+          "question": "Which company had higher revenue per employee in 2024, BMW or Bosch, and what were the values?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw",
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024",
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "table_based_questions",
+      "category_name": "Table-Based Questions",
+      "description": "Queries that should rely primarily on table chunks.",
+      "cases": [
+        {
+          "case_id": "table_bmw_group_revenue",
+          "question": "From BMW's figures table, what was Group revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [
+            "table"
+          ],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": [
+            "table"
+          ]
+        },
+        {
+          "case_id": "table_mercedes_ebit",
+          "question": "From the Mercedes-Benz condensed consolidated statement of income, what was EBIT in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [
+            "table"
+          ],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": [
+            "table"
+          ]
+        },
+        {
+          "case_id": "table_volkswagen_apac_sales_revenue",
+          "question": "From Volkswagen Group's market table, what was Asia-Pacific sales revenue in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [
+            "table"
+          ],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": [
+            "table"
+          ]
+        },
+        {
+          "case_id": "table_siemens_book_to_bill_and_backlog",
+          "question": "From Siemens' orders and revenue section, what were the book-to-bill ratio and order backlog for fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [
+            "table"
+          ],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": [
+            "table"
+          ]
+        },
+        {
+          "case_id": "table_bosch_profit_after_tax",
+          "question": "From Bosch's key data table, what was profit after tax in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [
+            "table"
+          ],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": [
+            "table"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "evidence_location",
+      "category_name": "Evidence-Location Questions",
+      "description": "Traceability questions that ask where a statement appears.",
+      "cases": [
+        {
+          "case_id": "location_bmw_outlook_page",
+          "question": "On which page is BMW's Automotive EBIT margin outlook stated?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "location_mercedes_revenue_page",
+          "question": "On which page is Mercedes-Benz 2024 revenue reported?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "location_volkswagen_outlook_page",
+          "question": "On which page does Volkswagen state its 2025 sales revenue and operating return on sales outlook?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "location_siemens_dividend_page",
+          "question": "On which page does Siemens propose the dividend for fiscal 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "location_bosch_growth_forecast_page",
+          "question": "On which page does Bosch forecast 2025 sales revenue growth of 1 to 3 percent?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "exact_evidence_extraction",
+      "category_name": "Exact Evidence Extraction",
+      "description": "Questions that explicitly require quoted wording from the reports.",
+      "cases": [
+        {
+          "case_id": "quote_bmw_geopolitical_risk",
+          "question": "Quote what BMW says about geopolitical risk scenarios in the detailed risk report.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "quote_mercedes_geopolitical_situation",
+          "question": "Quote what Mercedes-Benz says about the geopolitical situation in 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "quote_volkswagen_2025_outlook",
+          "question": "Quote Volkswagen's statement about expected 2025 sales revenue and operating return on sales.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "quote_siemens_order_backlog",
+          "question": "Quote Siemens' statement about its total order backlog as of September 30, 2024.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "quote_bosch_scope3_target",
+          "question": "Quote Bosch's statement about its Scope 3 reduction target.",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    },
+    {
+      "category_id": "narrative_synthesis",
+      "category_name": "Narrative Synthesis",
+      "description": "Multi-sentence synthesis questions that should stay grounded in retrieved text.",
+      "cases": [
+        {
+          "case_id": "narrative_bmw_market_conditions",
+          "question": "What market conditions does BMW describe for 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bmw"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bmw_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "narrative_mercedes_2024_challenges",
+          "question": "What challenges does Mercedes-Benz say characterized 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "mercedes"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "mercedes_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "narrative_volkswagen_environment",
+          "question": "How does Volkswagen describe the business environment in 2024?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "volkswagen"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "volkswagen_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "narrative_siemens_2025_environment",
+          "question": "How does Siemens describe the macroeconomic environment for 2025?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "siemens"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "siemens_2024"
+          ],
+          "expected_chunk_types": []
+        },
+        {
+          "case_id": "narrative_bosch_2024_challenges",
+          "question": "Why does Bosch say 2024 was challenging?",
+          "answer_expectation": "supported",
+          "company_filters": [
+            "bosch"
+          ],
+          "chunk_types": [],
+          "expected_document_ids": [
+            "bosch_2024"
+          ],
+          "expected_chunk_types": []
+        }
+      ]
+    }
+  ]
+}

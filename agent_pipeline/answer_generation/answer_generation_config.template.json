@@ -1,0 +1,12 @@
+{
+  "endpoint": "",
+  "api_key": "",
+  "chat_deployment": "YOUR_AZURE_OPENAI_CHAT_DEPLOYMENT_NAME",
+  "api_version": "2024-02-01",
+  "temperature": 0.0,
+  "max_output_tokens": 1200,
+  "retrieval_limit": 12,
+  "minimum_top_score": 0.45,
+  "max_context_characters": 24000,
+  "max_chunk_characters": 2500
+}

@@ -1,0 +1,22 @@
+# Local secrets and machine-specific configuration
+ingestion_pipeline/embeeding/azure_openai_config.json
+ingestion_pipeline/vector_storage/qdrant/qdrant_config.json
+agent_pipeline/answer_generation/answer_generation_config.json
+.env
+.env.*
+
+# Python cache files
+__pycache__/
+*.py[cod]
+.cache/
+.venv/
+
+# Frontend build artifacts
+ui/node_modules/
+ui/dist/
+
+# Large generated pipeline artifacts
+ingestion_pipeline/parsing/data/raw_azure/
+ingestion_pipeline/parsing/data/processed/
+ingestion_pipeline/chunking/data/chunks/
+ingestion_pipeline/embeeding/data/embeddings/

@@ -1,0 +1,278 @@
+{
+  "summary": {
+    "case_count": 16,
+    "supported_case_count": 12,
+    "unsupported_case_count": 2,
+    "no_strong_answer_case_count": 2,
+    "mean_latency_seconds": 11.664,
+    "p95_latency_seconds": 44.064,
+    "unsupported_refusal_accuracy": 1.0,
+    "no_strong_answer_accuracy": 1.0,
+    "format_compliance_rule_rate": 1.0,
+    "resource_presence_rule_rate": 0.916667,
+    "llm_correctness_mean": 0.958333,
+    "llm_groundedness_mean": 1.0,
+    "llm_citation_accuracy_mean": 0.958333,
+    "llm_completeness_mean": 0.958333,
+    "llm_format_compliance_mean": 1.0,
+    "llm_answer_quality_mean": 0.975
+  },
+  "cases": [
+    {
+      "case_id": "bmw_group_revenue_2024",
+      "question": "What were BMW Group revenues in 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 5.626,
+      "generated_answer": "Answer\nBMW Group revenues in 2024 were €142,380 million.\n\nReporting Period\nFinancial year 2024\n\nResources\n- BMW Group, bmw_2024.pdf, page 71\n\nEvidence\nModerate decline in Group revenues*\n\n> Group revenues in the financial year 2024 were moderately lower than in the previous year (2024: € 142,380 million; 2023: € 155,498 million; - 8.4%, adjusted for currency effects: -7.8%). The main reasons for this were lower sales volumes and a decline in selling prices in the Automotive segment. The pricing measures brought forward from the previous year partially com- pensated for the impact of increased competition on vehicle prices. The situation in China was particularly challenging during the financial year 2024. Although the market grew as a whole, the BMW Group's sales volume decreased and fell short of ex- pectations. One of the reasons for this was the continued slow- down in consumer spending on vehicles in higher price seg- ments, which did not improve noticeably despite government support measures. Sales were also affected by vehicle delivery stops for vehicles linked to the supplied IBS. In the Financial Ser- vices segment, the upturn in revenues from credit financing for dealerships and retail customers was largely driven by a rise in contract values and expanded dealership inventories. The amount of revenues eliminated on consolidation rose due to the upturn in new leasing business. This development had a consid- erable negative impact on Group revenues.",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, fully grounded, cites the correct resource, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "bmw_automotive_ebit_margin_outlook",
+      "question": "What EBIT margin does BMW expect for the Automotive segment?",
+      "answer_expectation": "supported",
+      "latency_seconds": 6.389,
+      "generated_answer": "Answer\nBMW Group expects the EBIT margin for the Automotive segment to be in the range of 5% to 7%.\n\nReporting Period\n2025 outlook\n\nResources\n- BMW Group, bmw_2024.pdf, page 262\n\nEvidence\n- Rising deliveries and easing tensions in the raw materials mar- kets are having a positive impact in the financial year. By con- trast, currency effects, the ongoing challenges in China, the ad- ditional tariffs and the continued increased support measures for the supply chain are weighing on earnings. Against this back- drop, the EBIT margin is expected to be in the range of 5% to 7%. The RoCE for the Automotive segment is expected to finish within a range between 9% and 13%.",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, complete, well-cited, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "bmw_scope_3_target",
+      "question": "What reduction target did BMW set for Scope 3 automobile emissions?",
+      "answer_expectation": "supported",
+      "latency_seconds": 7.936,
+      "generated_answer": "Answer\nBMW Group\nBMW set an absolute target for Scope 3 automobile emissions (covering purchased goods and services, transportation logistics, and the use phase) of 108 million tonnes of CO2e by 2030, which represents a 27.5% reduction compared to the base year 2019 (148.9 million tonnes of CO2e). This target is aligned with a well-below-two-degree (WB2D) approach.\n\nReporting Period\nBase year: 2019; Target year: 2030\n\nResources\n\n- BMW Group, bmw_2024.pdf, page 280\n- BMW Group, bmw_2024.pdf, page 121\n\nEvidence\n\n- \"The overarching target set for Scope 3 Automobiles (purchased goods and services, transpor- tation logistics, use phase) is in line with a well-below-two-de- gree (WB2D) approach. The targets set for the period up to 2030 envisage a reduction in CO2e emissions of at least 40 million tonnes of CO2e compared to the reference year 2019. ... At the level of Scope 3 emissions an absolute target of 108 mil- lion tonnes of CO2e has been set for purchased goods and ser- vices, transportation logistics and the use phase of automobiles, a reduction of 27.5% compared to the reference year 2019.\" (BMW Group, bmw_2024.pdf, page 280)\n- \"An absolute target of 108 million tonnes of CO2e for 2030 was defined for Scope 3 emissions in the Automotive segment, based on Purchased goods and services, Logistics and the Use phase. This is equivalent to a 27.5% reduction in emissions compared to the base year 2019 (148.9 million tonnes of CO2e).\" (BMW Group, bmw_2024.pdf, page 121)",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is fully correct, well-grounded, cites the expected resources, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "volkswagen_2025_outlook",
+      "question": "What does Volkswagen expect for sales revenue and operating return on sales in 2025?",
+      "answer_expectation": "supported",
+      "latency_seconds": 12.561,
+      "generated_answer": "Answer\nVolkswagen Group expects its sales revenue in 2025 to exceed the previous year's figure by up to 5%. The operating return on sales is projected to be between 5.5% and 6.5% for the Group.\n\nReporting Period\n2025 (forecast)\n\nResources\n1. Volkswagen Group, volkswagen_2024.pdf, p229\n2. Volkswagen Group, volkswagen_2024.pdf, p185\n\nEvidence\n1. \"We expect the sales revenue of the Volkswagen Group and the Passenger Cars and Light Commercial Vehicles segment to exceed the previous year's figure by up to 5% in 2025. The operating return on sales is projected to be between 5.5% and 6.5% for the Group and between 6% and 7% for the Passenger Cars and Light Commercial Vehicles segment. For the Commercial Vehicles segment, we anticipate an operating return on sales of 7.5% to 8.5% amid sales revenue on a level with the previous year. For the Financial Services Division, we forecast an increase of up to 5% in sales revenue compared with the prior year and an operating result in the range of €4.0 bil- lion.\"\n2. \"We expect the sales revenue of the Volkswagen Group and the Passenger Cars and Light Commercial Vehicles segment to exceed the previous year's figure by up to 5% in 2025. The operating return on sales is projected to be between 5.5% and 6.5% for the Group and between 6% and 7% for the Passenger Cars and Light Commercial Vehi- cles segment. For the Commercial Vehicles segment, we anticipate an operating return on sales of 7.5% to 8.5% amid sales revenue on a level with the previous year. For the Financial Services Division, we forecast an increase of up to 5% in sales revenue compared with the prior year and an operating result in the range of €4.0 billion.\"",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is accurate, fully grounded, cites the correct resource, and follows the required structure.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "bosch_free_cash_flow",
+      "question": "What was Bosch Group free cash flow in 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 60.775,
+      "generated_answer": "Answer\nBosch Group's free cash flow in 2024 was 0.9 billion euros.\n\nReporting Period\n2024\n\nResources\n\n- Robert Bosch GmbH, bosch_2024.pdf, page 59\n- Robert Bosch GmbH, bosch_2024.pdf, page 74\n\nEvidence\n\n- \"At 0.9 billion euros, Bosch Group free cash flow is positive despite the decline in EBIT, and meets the expectation formu- lated in the previous year.\" (Robert Bosch GmbH, bosch_2024.pdf, page 59)\n- \"For 2024, we disclose a positive free cash flow of 0.9 billion euros, compared with 2.2 billion euros in the previous year. Despite the reduction in EBIT, we met the expectations for- mulated in the previous year. FCF is calculated as the sum of cash flows from operating activities, cash flows from invest- ing activities (without participating interests and other finan- cial investments), and the repayment of lease liabilities.\" (Robert Bosch GmbH, bosch_2024.pdf, page 74)",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, well-supported by evidence, cites the expected resource, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "bosch_cash_flow_table_liquidity",
+      "question": "What was Bosch liquidity at the end of the year in the 2024 cash flow statement?",
+      "answer_expectation": "supported",
+      "latency_seconds": 5.43,
+      "generated_answer": "Answer\nBosch's liquidity at the end of the year in the 2024 cash flow statement was €8,223 million.\n\nReporting Period\nDecember 31, 2024\n\nResources\n- Robert Bosch GmbH, bosch_2024.pdf, page 73\n- Robert Bosch GmbH, bosch_2024.pdf, page 95\n\nEvidence\n- Row 7: C1=Liquidity at the end of the year (Dec. 31) | C2=8,223 | C3=7,443\n- Row 13: C1=Liquidity at the end of the period (December 31) | C3=8,223 | C4=7,443",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, fully grounded, cites the right resource, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow",
+      "question": "What was Mercedes-Benz free cash flow of the industrial business in 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 6.067,
+      "generated_answer": "Answer\nMercedes-Benz Group: The free cash flow of the industrial business in 2024 amounted to €9.2 billion.\n\nReporting Period\n2024\n\nResources\n\n- Mercedes-Benz Group, mercedes_2024.pdf, page 64\n- Mercedes-Benz Group, mercedes_2024.pdf, page 66\n\nEvidence\n\n- \"In 2024, the free cash flow of the industrial business amounted to €9.2 billion and was thus slightly lower than the previous year's figure of €11.3 billion.\" (Mercedes-Benz Group, mercedes_2024.pdf, page 64)\n- \"Row 9: C1=Free cash flow of the industrial business | C2=9,152 | C3=11,316\" (Mercedes-Benz Group, mercedes_2024.pdf, page 66)",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 0.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 0.5,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct and well-supported, but the cited pages (64, 66) do not exactly match the expected page (65).",
+        "llm_answer_quality_mean": 0.9
+      }
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow_table",
+      "question": "What value does the Mercedes-Benz free cash flow of the industrial business table show for 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 38.494,
+      "generated_answer": "Answer\nThe Mercedes-Benz free cash flow of the industrial business table shows a value of €9,152 million for 2024.\n\nReporting Period\n2024\n\nResources\n- Mercedes-Benz Group, mercedes_2024.pdf, page 66\n- Mercedes-Benz Group, mercedes_2024.pdf, page 64\n- Mercedes-Benz Group, mercedes_2024.pdf, page 92\n- Mercedes-Benz Group, mercedes_2024.pdf, page 82\n\nEvidence\n- Row 9: C1=Free cash flow of the industrial business | C2=9,152 | C3=11,316\n- Row 10: C1=Free cash flow of the industrial business | C2=9,152 | C3=11,316 | C4=-2,164\n- Row 6: C1=Free cash flow of the industrial business | C2=€9,152 million | C3=Significantly below the prior-year level\n- Row 6: C1=Free cash flow of the industrial business | C2=Slightly below the prior-year level | C3=Q3: Significantly below the prior-year level | C4=€9,152 million | C5=-19% Slightly below the prior-year level",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, well-supported by evidence, cites the expected resource, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "siemens_dividend_2024",
+      "question": "What dividend did Siemens propose for fiscal 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 6.77,
+      "generated_answer": "Answer\nSiemens proposed a dividend of €5.20 per share for fiscal 2024.\n\nReporting Period\nFiscal year ended September 30, 2024.\n\nResources\n\n- Siemens AG, siemens_2024.pdf, page 33\n- Siemens AG, siemens_2024.pdf, page 6\n- Siemens AG, siemens_2024.pdf, page 21\n- Siemens AG, siemens_2024.pdf, page 72\n- Siemens AG, siemens_2024.pdf, page 133\n\nEvidence\n\n- \"The Supervisory Board and the Managing Board propose to distribute a dividend of €5.20 per share of no par value entitled to the dividend, from the unappropriated net income of Siemens AG for the fiscal year ended September 30, 2024 amounting to €4.2 billion. The proposed dividend represents a total payout of €4.1 billion based on the estimated number of shares entitled to dividend at the date of the Annual Shareholders' Meeting.\" (Siemens AG, siemens_2024.pdf, p33)\n- \"At the Annual Shareholders' Meeting, the Managing Board, in agreement with the Supervisory Board, will submit the following proposal to allocate the unappropriated net income of Siemens AG for fiscal 2024: to distribute a dividend of €5.20 on each share of no par value entitled to the dividend for fiscal 2024 existing at the date of the Annual Shareholders' Meeting; the remaining amount is to be carried...\" (Siemens AG, siemens_2024.pdf, p6)\n- \"We intend to continue providing an attractive shareholder return. The Siemens Managing Board, in agreement with the Siemens Supervisory Board, proposes to increase the dividend to €5.20 per share, up from €4.70 per share a year earlier.\" (Siemens AG, siemens_2024.pdf, p21)\n- \"The Managing Board and the Supervisory Board propose to distribute a dividend of €5.20 per share to holders entitled to dividends, in total representing approximately €4.1 billion in expected payments. Payment of the proposed dividend is contingent upon approval at the Shareholders' Meeting on February 13, 2025.\" (Siemens AG, siemens_2024.pdf, p72)\n- \"The Supervisory Board and the Managing Board propose the unappropriated net income of Siemens AG for the fiscal year ended September 30, 2024, amounting to €4,160 million to be appropriated as follows: Distribution of a dividend of €5.20 on each share of no par value entitled to the dividend, and carry-forward of the unappropriated net income for shares of no par value not entitled to the dividend.\" (Siemens AG, siemens_2024.pdf, p133)",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is fully correct, well-grounded, cites the expected resource, and follows the requested structure.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "siemens_digital_industries_order_backlog",
+      "question": "What was Digital Industries' order backlog at the end of fiscal 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 7.351,
+      "generated_answer": "Answer\nSiemens AG: Digital Industries' order backlog at the end of fiscal 2024 amounted to €9 billion.\n\nReporting Period\nFiscal year ended September 30, 2024.\n\nResources\n\n- Siemens AG, siemens_2024.pdf, page 9\n- Siemens AG, siemens_2024.pdf, page 87\n\nEvidence\n\n- \"At the end of fiscal 2024, Digital Industries' order backlog amounted to €9 billion, of which €6 billion are expected to be converted into revenue in fiscal 2025.\"\n- \"As of September 30, 2024, and 2023, order backlog totaled €113 billion and €109 billion; thereof Digital Industries €9 billion and €11 billion, Smart Infrastructure €18 billion and €16 billion, Mobility €48 billion and €45 billion and Siemens Healthineers €35 billion and €34 billion. In fiscal 2025, Siemens expects to convert approximately €42 billion of the September 30, 2024 order backlog into revenue; thereof at Digital Industries approximately €6 billion, Smart Infrastructure approximately €13 billion, Mobility approximately €11 billion and Siemens Healthineers approximately €11 billion.\"",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, fully grounded, cites the right resource, and follows the required format.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "siemens_smart_infrastructure_order_backlog",
+      "question": "What was Smart Infrastructure's order backlog at the end of fiscal 2024?",
+      "answer_expectation": "supported",
+      "latency_seconds": 5.201,
+      "generated_answer": "Answer\nSiemens AG: Smart Infrastructure's order backlog at the end of fiscal 2024 was €18 billion.\n\nReporting Period\nFiscal year ended September 30, 2024.\n\nResources\n1. Siemens AG, siemens_2024.pdf, page 11\n2. Siemens AG, siemens_2024.pdf, page 87\n\nEvidence\n1. \"At the end of fiscal 2024, Smart Infrastructure's order backlog was €18 billion, of which €13 billion are expected to be converted into revenue in fiscal 2025.\"\n2. \"As of September 30, 2024, and 2023, order backlog totaled €113 billion and €109 billion; thereof Digital Industries €9 billion and €11 billion, Smart Infrastructure €18 billion and €16 billion, Mobility €48 billion and €45 billion and Siemens Healthineers €35 billion and €34 billion.\"",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 1.0,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 1.0,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer is correct, well-cited, complete, and follows the required structure.",
+        "llm_answer_quality_mean": 1.0
+      }
+    },
+    {
+      "case_id": "cross_company_bmw_volkswagen_outlook",
+      "question": "Compare BMW and Volkswagen outlook for 2025.",
+      "answer_expectation": "supported",
+      "latency_seconds": 11.115,
+      "generated_answer": "Answer\nBMW Group:\nBMW expects deliveries of BMW, MINI, and Rolls-Royce vehicles to rise slightly year-on-year in 2025, driven by increased demand, full availability of new models (such as the BMW 5 Series, BMW X3, and updated MINI range), and the launch of the BMW 2 Series Gran Coupé. The share of all-electric cars relative to total deliveries will increase slightly compared to 2024. Investments and costs related to electrification and digitalization will decline after peaking in 2024, with ongoing preparations for the launch of NEUE KLASSE models and development of sixth-generation battery technology.\n\nVolkswagen Group:\nVolkswagen expects sales revenue to exceed the previous year's figure by up to 5% in 2025. The operating return on sales is projected to be between 5.5% and 6.5% for the Group. Deliveries to customers are anticipated to be similar to the previous year in a challenging market environment. The Group will launch around 30 new models worldwide, focusing on product strength and electrification, with continued transformation in global markets at varying speeds. The Commercial Vehicles segment expects sales revenue on a level with the previous year, but new registrations for mid-sized and heavy trucks will be down noticeably, while bus markets will see a noticeable increase in demand. Volkswagen highlights risks from political uncertainty, trade restrictions, geopolitical tensions, and intensified competition.\n\nReporting Period\n2025 outlook.\n\nResources\n- BMW Group, bmw_2024.pdf, p262\n- BMW Group, bmw_2024.pdf, p261\n- Volkswagen Group, volkswagen_2024.pdf, p229\n- Volkswagen Group, volkswagen_2024.pdf, p228\n- Volkswagen Group, volkswagen_2024.pdf, p9\n\nEvidence\nBMW Group, bmw_2024.pdf, p262:\n\"Deliveries of BMW, MINI and Rolls-Royce brand vehicles in the Automotive segment are expected to rise slightly year-on-year due to an increase in demand, full availability of new models and the updated MINI model range. The share of all-electric cars rel- ative to total deliveries will increase slightly compared to 2024. ... The electrification and digital- isation strategy will continue in 2025, although costs and invest- ments are expected to decline after peaking in 2024. Expendi- ture in the 2025 financial year is connected with preparations for the launch of the NEUE KLASSE models, including the ongoing development of the sixth generation of our battery technology.\"\n\nBMW Group, bmw_2024.pdf, p261:\n\"The expectations contained in the outlook are based on the BMW Group's forecast for 2025 and reflect its status at the time of preparing the Group Financial Statements. ... The BMW Group is anticipating the following developments in the 2025 financial year:\"\n\nVolkswagen Group, volkswagen_2024.pdf, p229:\n\"We expect the sales revenue of the Volkswagen Group and the Passenger Cars and Light Commercial Vehicles segment to exceed the previous year's figure by up to 5% in 2025. The operating return on sales is projected to be between 5.5% and 6.5% for the Group ... For the Commercial Vehicles segment, we anticipate an operating return on sales of 7.5% to 8.5% amid sales revenue on a level with the previous year. ... In a challenging market environment, we anticipate that the number of deliveries to customers of the Volks- wagen Group will be similar to the previous year. Challenges will arise in particular from an environment of political uncertainty, expanding trade restrictions and geopolitical tensions, the increasing intensity of competition, volatile commodity, energy and foreign exchange markets, and more stringent emissions-related requirements.\"\n\nVolkswagen Group, volkswagen_2024.pdf, p228:\n\"Our planning is based on the assumption that global economic output will grow overall in 2025 at a slightly slower pace than in 2024. ... We assume that com- petition in the international automotive markets will intensify further. Crisis-related disruption to the global supply chain and the resulting impact on vehicle availability may weigh on the volume of new registrations. Moreover, sudden new or intensified geopolitical tension and conflicts could lead to rising prices for materials and declining availability of energy.\"\n\nVolkswagen Group, volkswagen_2024.pdf, p9:\n\"We will remain on the offensive in 2025: around 30 new models will be launched worldwide. We focus on our strength: our products. Fascinating vehicles with which we position ourselves at the forefront of the competition. ... The future of mobility is electric. It is superior to combustion engine technology in terms of its property profile. We stand by that. At the same time, we see that the transformation of global markets is developing at different speeds. In addition to the products, it depends on the charging infrastructure, energy prices, incentive models and regulation.\"",
+      "metrics": {
+        "format_compliance_rule": 1.0,
+        "resource_presence_rule": 1.0,
+        "llm_correctness": 0.5,
+        "llm_groundedness": 1.0,
+        "llm_citation_accuracy": 1.0,
+        "llm_completeness": 0.5,
+        "llm_format_compliance": 1.0,
+        "llm_notes": "The answer provides detailed outlooks but omits BMW's EBIT margin guidance, which is core to the comparison.",
+        "llm_answer_quality_mean": 0.8
+      }
+    },
+    {
+      "case_id": "unsupported_weather_munich",
+      "question": "What is the weather in Munich today?",
+      "answer_expectation": "unsupported",
+      "latency_seconds": 1.91,
+      "generated_answer": "Unsupported: This question is outside the scope of the 2024 annual reports.",
+      "metrics": {
+        "exact_refusal_match": 1.0
+      }
+    },
+    {
+      "case_id": "unsupported_python_sort",
+      "question": "Write Python code to sort a list of numbers.",
+      "answer_expectation": "unsupported",
+      "latency_seconds": 1.015,
+      "generated_answer": "Unsupported: This question is outside the scope of the 2024 annual reports.",
+      "metrics": {
+        "exact_refusal_match": 1.0
+      }
+    },
+    {
+      "case_id": "no_strong_answer_bmw_2026_revenue",
+      "question": "What will BMW Group revenues be in 2026?",
+      "answer_expectation": "no_strong_answer",
+      "latency_seconds": 5.498,
+      "generated_answer": "No strong answer found in the provided documents.",
+      "metrics": {
+        "exact_refusal_match": 1.0
+      }
+    },
+    {
+      "case_id": "no_strong_answer_siemens_q2_revenue",
+      "question": "What was Siemens revenue in Q2 2024 only?",
+      "answer_expectation": "no_strong_answer",
+      "latency_seconds": 4.482,
+      "generated_answer": "No strong answer found in the provided documents.",
+      "metrics": {
+        "exact_refusal_match": 1.0
+      }
+    }
+  ]
+}

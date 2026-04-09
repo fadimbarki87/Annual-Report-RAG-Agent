@@ -1,0 +1,51 @@
+{
+  "qdrant_url": "https://605bb82a-89f5-42b9-8b53-0ca0449edd94.eu-central-1-0.aws.cloud.qdrant.io",
+  "collection_name": "annual_report_chunks",
+  "distance": "Cosine",
+  "configured_vector_size": 3072,
+  "documents_upserted": 5,
+  "points_upserted": 7426,
+  "collection_points_count_after_upsert": 7426,
+  "collection_count_matches_upserted_points": true,
+  "payload_indexes": {
+    "document_id": "keyword",
+    "source_file": "keyword",
+    "chunk_type": "keyword",
+    "content_source": "keyword",
+    "chunk_index": "integer",
+    "page_start": "integer",
+    "page_end": "integer"
+  },
+  "documents": [
+    {
+      "document_id": "bmw_2024",
+      "points_upserted": 1834,
+      "source_embedding_file": "C:\\Users\\hp\\Downloads\\rag_annual_reports\\ingestion_pipeline\\embeeding\\data\\embeddings\\bmw_2024\\bmw_2024_embeddings.jsonl",
+      "vector_dimension": 3072
+    },
+    {
+      "document_id": "bosch_2024",
+      "points_upserted": 617,
+      "source_embedding_file": "C:\\Users\\hp\\Downloads\\rag_annual_reports\\ingestion_pipeline\\embeeding\\data\\embeddings\\bosch_2024\\bosch_2024_embeddings.jsonl",
+      "vector_dimension": 3072
+    },
+    {
+      "document_id": "mercedes_2024",
+      "points_upserted": 1548,
+      "source_embedding_file": "C:\\Users\\hp\\Downloads\\rag_annual_reports\\ingestion_pipeline\\embeeding\\data\\embeddings\\mercedes_2024\\mercedes_2024_embeddings.jsonl",
+      "vector_dimension": 3072
+    },
+    {
+      "document_id": "siemens_2024",
+      "points_upserted": 1002,
+      "source_embedding_file": "C:\\Users\\hp\\Downloads\\rag_annual_reports\\ingestion_pipeline\\embeeding\\data\\embeddings\\siemens_2024\\siemens_2024_embeddings.jsonl",
+      "vector_dimension": 3072
+    },
+    {
+      "document_id": "volkswagen_2024",
+      "points_upserted": 2425,
+      "source_embedding_file": "C:\\Users\\hp\\Downloads\\rag_annual_reports\\ingestion_pipeline\\embeeding\\data\\embeddings\\volkswagen_2024\\volkswagen_2024_embeddings.jsonl",
+      "vector_dimension": 3072
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "cases": [
+    {
+      "case_id": "bmw_group_revenue_2024",
+      "question": "What were BMW Group revenues in 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["bmw"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["bmw_2024__c0294__text__p71"],
+      "gold_answer": "BMW Group revenues in 2024 were €142,380 million.",
+      "expected_resources": [
+        {
+          "company": "BMW Group",
+          "source_file": "bmw_2024.pdf",
+          "page": 71
+        }
+      ]
+    },
+    {
+      "case_id": "bmw_automotive_ebit_margin_outlook",
+      "question": "What EBIT margin does BMW expect for the Automotive segment?",
+      "answer_expectation": "supported",
+      "company_filters": ["bmw"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["bmw_2024__c1213__text__p262"],
+      "gold_answer": "BMW expects the Automotive segment EBIT margin to be in the range of 5% to 7% in 2025.",
+      "expected_resources": [
+        {
+          "company": "BMW Group",
+          "source_file": "bmw_2024.pdf",
+          "page": 262
+        }
+      ]
+    },
+    {
+      "case_id": "bmw_scope_3_target",
+      "question": "What reduction target did BMW set for Scope 3 automobile emissions?",
+      "answer_expectation": "supported",
+      "company_filters": ["bmw"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["bmw_2024__c1270__text__p280"],
+      "gold_answer": "BMW set an absolute Scope 3 automobiles target of 108 million tonnes of CO2e, a reduction of 27.5% compared with 2019.",
+      "expected_resources": [
+        {
+          "company": "BMW Group",
+          "source_file": "bmw_2024.pdf",
+          "page": 280
+        }
+      ]
+    },
+    {
+      "case_id": "volkswagen_2025_outlook",
+      "question": "What does Volkswagen expect for sales revenue and operating return on sales in 2025?",
+      "answer_expectation": "supported",
+      "company_filters": ["volkswagen"],
+      "chunk_types": [],
+      "relevant_chunk_ids": [
+        "volkswagen_2024__c0827__text__p229",
+        "volkswagen_2024__c0649__text__p185"
+      ],
+      "gold_answer": "Volkswagen expects Group sales revenue in 2025 to exceed the previous year's figure by up to 5% and Group operating return on sales to be between 5.5% and 6.5%.",
+      "expected_resources": [
+        {
+          "company": "Volkswagen Group",
+          "source_file": "volkswagen_2024.pdf",
+          "page": 229
+        }
+      ]
+    },
+    {
+      "case_id": "bosch_free_cash_flow",
+      "question": "What was Bosch Group free cash flow in 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["bosch"],
+      "chunk_types": [],
+      "relevant_chunk_ids": [
+        "bosch_2024__c0154__text__p59"
+      ],
+      "gold_answer": "Bosch Group free cash flow in 2024 was positive at 0.9 billion euros.",
+      "expected_resources": [
+        {
+          "company": "Robert Bosch GmbH",
+          "source_file": "bosch_2024.pdf",
+          "page": 59
+        }
+      ]
+    },
+    {
+      "case_id": "bosch_cash_flow_table_liquidity",
+      "question": "What was Bosch liquidity at the end of the year in the 2024 cash flow statement?",
+      "answer_expectation": "supported",
+      "company_filters": ["bosch"],
+      "chunk_types": ["table"],
+      "relevant_chunk_ids": [
+        "bosch_2024__c0199__table__p73__t006"
+      ],
+      "gold_answer": "Bosch liquidity at the end of the year was 8,223 million euros.",
+      "expected_resources": [
+        {
+          "company": "Robert Bosch GmbH",
+          "source_file": "bosch_2024.pdf",
+          "page": 73
+        }
+      ]
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow",
+      "question": "What was Mercedes-Benz free cash flow of the industrial business in 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["mercedes"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["mercedes_2024__c0192__text__p65"],
+      "gold_answer": "Mercedes-Benz free cash flow of the industrial business in 2024 was €9.2 billion.",
+      "expected_resources": [
+        {
+          "company": "Mercedes-Benz Group",
+          "source_file": "mercedes_2024.pdf",
+          "page": 65
+        }
+      ]
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow_table",
+      "question": "What value does the Mercedes-Benz free cash flow of the industrial business table show for 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["mercedes"],
+      "chunk_types": ["table"],
+      "relevant_chunk_ids": ["mercedes_2024__c0200__table__p66__t023"],
+      "gold_answer": "The Mercedes-Benz free cash flow of the industrial business table shows 9,152 million euros for 2024.",
+      "expected_resources": [
+        {
+          "company": "Mercedes-Benz Group",
+          "source_file": "mercedes_2024.pdf",
+          "page": 66
+        }
+      ]
+    },
+    {
+      "case_id": "siemens_dividend_2024",
+      "question": "What dividend did Siemens propose for fiscal 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["siemens"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["siemens_2024__c0177__text__p33"],
+      "gold_answer": "Siemens proposed a dividend of €5.20 per share for fiscal 2024.",
+      "expected_resources": [
+        {
+          "company": "Siemens AG",
+          "source_file": "siemens_2024.pdf",
+          "page": 33
+        }
+      ]
+    },
+    {
+      "case_id": "siemens_digital_industries_order_backlog",
+      "question": "What was Digital Industries' order backlog at the end of fiscal 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["siemens"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["siemens_2024__c0031__text__p9"],
+      "gold_answer": "At the end of fiscal 2024, Digital Industries' order backlog amounted to €9 billion, of which €6 billion are expected to be converted into revenue in fiscal 2025.",
+      "expected_resources": [
+        {
+          "company": "Siemens AG",
+          "source_file": "siemens_2024.pdf",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "case_id": "siemens_smart_infrastructure_order_backlog",
+      "question": "What was Smart Infrastructure's order backlog at the end of fiscal 2024?",
+      "answer_expectation": "supported",
+      "company_filters": ["siemens"],
+      "chunk_types": [],
+      "relevant_chunk_ids": ["siemens_2024__c0042__text__p11"],
+      "gold_answer": "At the end of fiscal 2024, Smart Infrastructure's order backlog was €18 billion, of which €13 billion are expected to be converted into revenue in fiscal 2025.",
+      "expected_resources": [
+        {
+          "company": "Siemens AG",
+          "source_file": "siemens_2024.pdf",
+          "page": 11
+        }
+      ]
+    },
+    {
+      "case_id": "cross_company_bmw_volkswagen_outlook",
+      "question": "Compare BMW and Volkswagen outlook for 2025.",
+      "answer_expectation": "supported",
+      "company_filters": ["bmw", "volkswagen"],
+      "chunk_types": [],
+      "relevant_chunk_ids": [
+        "bmw_2024__c1212__text__p262",
+        "bmw_2024__c1213__text__p262",
+        "volkswagen_2024__c0827__text__p229"
+      ],
+      "gold_answer": "BMW expects Automotive EBIT margin in 2025 to be 5% to 7%, while Volkswagen expects Group sales revenue to exceed the previous year by up to 5% and Group operating return on sales to be 5.5% to 6.5%.",
+      "expected_resources": [
+        {
+          "company": "BMW Group",
+          "source_file": "bmw_2024.pdf",
+          "page": 262
+        },
+        {
+          "company": "Volkswagen Group",
+          "source_file": "volkswagen_2024.pdf",
+          "page": 229
+        }
+      ]
+    },
+    {
+      "case_id": "unsupported_weather_munich",
+      "question": "What is the weather in Munich today?",
+      "answer_expectation": "unsupported",
+      "company_filters": [],
+      "chunk_types": [],
+      "gold_answer": "Unsupported: This question is outside the scope of the 2024 annual reports."
+    },
+    {
+      "case_id": "unsupported_python_sort",
+      "question": "Write Python code to sort a list of numbers.",
+      "answer_expectation": "unsupported",
+      "company_filters": [],
+      "chunk_types": [],
+      "gold_answer": "Unsupported: This question is outside the scope of the 2024 annual reports."
+    },
+    {
+      "case_id": "no_strong_answer_bmw_2026_revenue",
+      "question": "What will BMW Group revenues be in 2026?",
+      "answer_expectation": "no_strong_answer",
+      "company_filters": ["bmw"],
+      "chunk_types": [],
+      "gold_answer": "No strong answer found in the provided documents."
+    },
+    {
+      "case_id": "no_strong_answer_siemens_q2_revenue",
+      "question": "What was Siemens revenue in Q2 2024 only?",
+      "answer_expectation": "no_strong_answer",
+      "company_filters": ["siemens"],
+      "chunk_types": [],
+      "gold_answer": "No strong answer found in the provided documents."
+    }
+  ]
+}
+

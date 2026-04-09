@@ -1,0 +1,418 @@
+{
+  "summary": {
+    "case_count": 12,
+    "top_k": 20,
+    "mean_latency_seconds": 1.663,
+    "max_latency_seconds": 2.97,
+    "hit_at_1_rate": 0.75,
+    "hit_at_3_rate": 0.9166666666666666,
+    "hit_at_5_rate": 0.9166666666666666,
+    "hit_at_10_rate": 1.0,
+    "hit_at_20_rate": 1.0,
+    "missed_case_ids": []
+  },
+  "cases": [
+    {
+      "case_id": "bmw_group_revenue_2024",
+      "query": "What were BMW Group revenues in 2024?",
+      "company_filters": [
+        "bmw"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.74,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024"
+      ],
+      "top_chunk_ids": [
+        "bmw_2024__c0294__text__p71",
+        "bmw_2024__c1578__text__p356",
+        "bmw_2024__c0002__text__p2",
+        "bmw_2024__c0364__text__p88",
+        "bmw_2024__c0340__text__p83"
+      ]
+    },
+    {
+      "case_id": "bmw_automotive_ebit_margin_outlook",
+      "query": "What EBIT margin does BMW expect for the Automotive segment?",
+      "company_filters": [
+        "bmw"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.421,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024"
+      ],
+      "top_chunk_ids": [
+        "bmw_2024__c1213__text__p262",
+        "bmw_2024__c0278__text__p66",
+        "bmw_2024__c0342__text__p83",
+        "bmw_2024__c0004__text__p3",
+        "bmw_2024__c0343__text__p83"
+      ]
+    },
+    {
+      "case_id": "bmw_scope_3_target",
+      "query": "What reduction target did BMW set for Scope 3 automobile emissions?",
+      "company_filters": [
+        "bmw"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.495,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024"
+      ],
+      "top_chunk_ids": [
+        "bmw_2024__c1270__text__p280",
+        "bmw_2024__c0521__text__p121",
+        "bmw_2024__c0524__text__p121",
+        "bmw_2024__c0522__text__p121",
+        "bmw_2024__c0514__text__p119"
+      ]
+    },
+    {
+      "case_id": "volkswagen_2025_outlook",
+      "query": "What does Volkswagen expect for sales revenue and operating return on sales in 2025?",
+      "company_filters": [
+        "volkswagen"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 2.97,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "volkswagen_2024",
+        "volkswagen_2024",
+        "volkswagen_2024",
+        "volkswagen_2024",
+        "volkswagen_2024"
+      ],
+      "top_chunk_ids": [
+        "volkswagen_2024__c0827__text__p229",
+        "volkswagen_2024__c0649__text__p185",
+        "volkswagen_2024__c0419__text__p124",
+        "volkswagen_2024__c0422__text__p125",
+        "volkswagen_2024__c0057__text__p23"
+      ]
+    },
+    {
+      "case_id": "bosch_free_cash_flow",
+      "query": "What was Bosch Group free cash flow in 2024?",
+      "company_filters": [
+        "bosch"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.488,
+      "result_count": 20,
+      "expected_match_rank": 3,
+      "expected_group_ranks": [
+        3
+      ],
+      "hit_at_1": false,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024"
+      ],
+      "top_chunk_ids": [
+        "bosch_2024__c0154__text__p59",
+        "bosch_2024__c0200__text__p74",
+        "bosch_2024__c0201__text__p74",
+        "bosch_2024__c0153__text__p59",
+        "bosch_2024__c0005__text__p4"
+      ]
+    },
+    {
+      "case_id": "bosch_cash_flow_table_liquidity",
+      "query": "What was Bosch liquidity at the end of the year in the 2024 cash flow statement?",
+      "company_filters": [
+        "bosch"
+      ],
+      "chunk_types": [
+        "table"
+      ],
+      "latency_seconds": 1.432,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024",
+        "bosch_2024"
+      ],
+      "top_chunk_ids": [
+        "bosch_2024__c0199__table__p73__t006",
+        "bosch_2024__c0259__table__p95__t013",
+        "bosch_2024__c0257__table__p94__t012",
+        "bosch_2024__c0425__table__p151__t069",
+        "bosch_2024__c0427__table__p152__t070"
+      ]
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow",
+      "query": "What was Mercedes-Benz free cash flow of the industrial business in 2024?",
+      "company_filters": [
+        "mercedes"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.521,
+      "result_count": 20,
+      "expected_match_rank": 2,
+      "expected_group_ranks": [
+        2
+      ],
+      "hit_at_1": false,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024"
+      ],
+      "top_chunk_ids": [
+        "mercedes_2024__c0192__text__p65",
+        "mercedes_2024__c0188__text__p64",
+        "mercedes_2024__c0187__text__p64",
+        "mercedes_2024__c0242__text__p80",
+        "mercedes_2024__c0200__table__p66__t023"
+      ]
+    },
+    {
+      "case_id": "mercedes_industrial_free_cash_flow_table",
+      "query": "Which Mercedes-Benz table gives free cash flow of the industrial business for 2024?",
+      "company_filters": [
+        "mercedes"
+      ],
+      "chunk_types": [
+        "table"
+      ],
+      "latency_seconds": 1.804,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024",
+        "mercedes_2024"
+      ],
+      "top_chunk_ids": [
+        "mercedes_2024__c0200__table__p66__t023",
+        "mercedes_2024__c0190__table__p64__t021",
+        "mercedes_2024__c0185__table__p63__t020",
+        "mercedes_2024__c0195__table__p65__t022",
+        "mercedes_2024__c0282__table__p92__t035"
+      ]
+    },
+    {
+      "case_id": "siemens_dividend_2024",
+      "query": "What dividend did Siemens propose for fiscal 2024?",
+      "company_filters": [
+        "siemens"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.436,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024"
+      ],
+      "top_chunk_ids": [
+        "siemens_2024__c0177__text__p33",
+        "siemens_2024__c0014__text__p6",
+        "siemens_2024__c0101__text__p21",
+        "siemens_2024__c0390__text__p72",
+        "siemens_2024__c0675__text__p133"
+      ]
+    },
+    {
+      "case_id": "siemens_digital_industries_order_backlog",
+      "query": "What was Digital Industries' order backlog at the end of fiscal 2024?",
+      "company_filters": [
+        "siemens"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.584,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024"
+      ],
+      "top_chunk_ids": [
+        "siemens_2024__c0031__text__p9",
+        "siemens_2024__c0478__text__p87",
+        "siemens_2024__c0747__text__p154",
+        "siemens_2024__c0032__text__p9",
+        "siemens_2024__c0097__text__p21"
+      ]
+    },
+    {
+      "case_id": "siemens_smart_infrastructure_order_backlog",
+      "query": "What was Smart Infrastructure's order backlog at the end of fiscal 2024?",
+      "company_filters": [
+        "siemens"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.786,
+      "result_count": 20,
+      "expected_match_rank": 1,
+      "expected_group_ranks": [
+        1
+      ],
+      "hit_at_1": true,
+      "hit_at_3": true,
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024",
+        "siemens_2024"
+      ],
+      "top_chunk_ids": [
+        "siemens_2024__c0042__text__p11",
+        "siemens_2024__c0478__text__p87",
+        "siemens_2024__c0040__text__p10",
+        "siemens_2024__c0050__text__p12",
+        "siemens_2024__c0043__text__p11"
+      ]
+    },
+    {
+      "case_id": "cross_company_bmw_volkswagen_outlook",
+      "query": "Compare BMW and Volkswagen outlook for 2025.",
+      "company_filters": [
+        "bmw",
+        "volkswagen"
+      ],
+      "chunk_types": [],
+      "latency_seconds": 1.284,
+      "result_count": 20,
+      "expected_match_rank": 8,
+      "expected_group_ranks": [
+        8,
+        4
+      ],
+      "hit_at_1": false,
+      "hit_at_3": false,
+      "hit_at_5": false,
+      "hit_at_10": true,
+      "hit_at_20": true,
+      "top_documents": [
+        "bmw_2024",
+        "bmw_2024",
+        "bmw_2024",
+        "volkswagen_2024",
+        "volkswagen_2024"
+      ],
+      "top_chunk_ids": [
+        "bmw_2024__c0002__text__p2",
+        "bmw_2024__c1206__text__p261",
+        "bmw_2024__c1199__text__p260",
+        "volkswagen_2024__c0827__text__p229",
+        "volkswagen_2024__c0619__text__p177"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "categories": [
+    {
+      "category_id": "fact_lookup",
+      "category_name": "Fact Lookup",
+      "cases": [
+        {
+          "case_id": "demo_bmw_revenue",
+          "question": "What were BMW Group revenues in 2024?"
+        },
+        {
+          "case_id": "demo_mercedes_fcf",
+          "question": "What was Mercedes-Benz free cash flow of the industrial business in 2024?"
+        },
+        {
+          "case_id": "demo_bosch_headcount",
+          "question": "What headcount did Bosch report at December 31, 2024?"
+        }
+      ]
+    },
+    {
+      "category_id": "comparison",
+      "category_name": "Comparison",
+      "cases": [
+        {
+          "case_id": "demo_bmw_mercedes_revenue_compare",
+          "question": "Compare 2024 revenue for BMW Group and Mercedes-Benz Group."
+        },
+        {
+          "case_id": "demo_vw_bmw_revenue_compare",
+          "question": "Compare 2024 revenue for Volkswagen Group and BMW Group."
+        },
+        {
+          "case_id": "demo_revenue_compare_three_way",
+          "question": "Compare 2024 revenue for Volkswagen Group, Mercedes-Benz Group, and BMW Group."
+        }
+      ]
+    },
+    {
+      "category_id": "ranking",
+      "category_name": "Ranking",
+      "cases": [
+        {
+          "case_id": "demo_revenue_ranking",
+          "question": "Rank BMW, Mercedes-Benz, and Volkswagen Group by 2024 revenue from highest to lowest."
+        },
+        {
+          "case_id": "demo_employee_ranking",
+          "question": "Rank BMW, Siemens, and Bosch by reported employee count from highest to lowest."
+        },
+        {
+          "case_id": "demo_free_cash_flow_ranking",
+          "question": "Rank BMW Automotive free cash flow, Mercedes-Benz industrial free cash flow, and Bosch Group free cash flow from highest to lowest."
+        }
+      ]
+    },
+    {
+      "category_id": "evidence_location",
+      "category_name": "Evidence Location",
+      "cases": [
+        {
+          "case_id": "demo_siemens_dividend_source",
+          "question": "Show Siemens' dividend proposal with the source file and page."
+        },
+        {
+          "case_id": "demo_vw_outlook_source",
+          "question": "Give Volkswagen's 2025 outlook with exact evidence and pages."
+        },
+        {
+          "case_id": "demo_bmw_revenue_source",
+          "question": "Show BMW Group revenue for 2024 with exact evidence and pages."
+        }
+      ]
+    },
+    {
+      "category_id": "multi_hop",
+      "category_name": "Fact + Explanation",
+      "cases": [
+        {
+          "case_id": "demo_bmw_revenue_explanation",
+          "question": "What was BMW Group revenue in 2024 and what reasons does BMW give for the decline?"
+        },
+        {
+          "case_id": "demo_vw_operating_result_explanation",
+          "question": "What was Volkswagen's operating result in 2024 and what impacted it?"
+        },
+        {
+          "case_id": "demo_mercedes_revenue_explanation",
+          "question": "What was Mercedes-Benz revenue in 2024 and what reasons are given for the change?"
+        }
+      ]
+    },
+    {
+      "category_id": "aggregation",
+      "category_name": "Aggregation",
+      "cases": [
+        {
+          "case_id": "demo_total_bmw_mercedes_revenue",
+          "question": "What is the total 2024 revenue of BMW Group and Mercedes-Benz Group?"
+        },
+        {
+          "case_id": "demo_total_three_way_revenue",
+          "question": "What is the total 2024 revenue of BMW, Mercedes-Benz, and Volkswagen Group?"
+        },
+        {
+          "case_id": "demo_total_bosch_siemens_revenue",
+          "question": "What is the total 2024 revenue of Bosch Group and Siemens?"
+        }
+      ]
+    }
+  ]
+}

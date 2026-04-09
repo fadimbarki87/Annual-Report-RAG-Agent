@@ -1,0 +1,8 @@
+{
+  "endpoint": "https://YOUR-AZURE-OPENAI-RESOURCE.openai.azure.com",
+  "api_key": "YOUR_AZURE_OPENAI_API_KEY",
+  "embedding_deployment": "YOUR_EMBEDDING_DEPLOYMENT_NAME, e.g: text-embedding-3-large",
+  "api_version": "2024-02-01",
+  "batch_size": 16,
+  "max_batch_characters": 20000
+}

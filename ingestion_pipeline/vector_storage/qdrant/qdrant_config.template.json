@@ -1,0 +1,19 @@
+{
+  "qdrant_url": "https://YOUR-QDRANT-CLOUD-CLUSTER-URL",
+  "api_key": "YOUR_QDRANT_DATABASE_API_KEY",
+  "collection_name": "annual_report_chunks",
+  "vector_size": 3072,
+  "distance": "Cosine",
+  "batch_size": 64,
+  "recreate_collection": false,
+  "on_disk_payload": true,
+  "payload_indexes": {
+    "document_id": "keyword",
+    "source_file": "keyword",
+    "chunk_type": "keyword",
+    "content_source": "keyword",
+    "chunk_index": "integer",
+    "page_start": "integer",
+    "page_end": "integer"
+  }
+}
