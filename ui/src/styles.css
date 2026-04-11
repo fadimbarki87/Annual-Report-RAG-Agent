@@ -92,9 +92,9 @@ a {
 .page-column {
   position: relative;
   z-index: 1;
-  max-width: 1140px;
+  width: min(100%, 1520px);
   margin: 0 auto;
-  padding: 18px 20px 50px;
+  padding: 18px clamp(20px, 3vw, 44px) 50px;
 }
 
 .hero-stack,
@@ -110,8 +110,8 @@ a {
 
 .hero-title-row {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr) 112px;
-  gap: 12px;
+  grid-template-columns: clamp(108px, 8vw, 136px) minmax(0, 1fr) clamp(108px, 8vw, 136px);
+  gap: clamp(12px, 1.6vw, 24px);
   align-items: center;
 }
 
@@ -130,11 +130,11 @@ a {
 }
 
 .photo-slot {
-  width: 112px;
+  width: clamp(108px, 8vw, 136px);
 }
 
 .hero-spacer {
-  width: 112px;
+  width: clamp(108px, 8vw, 136px);
 }
 
 .photo-slot img {
@@ -167,14 +167,14 @@ a {
 }
 
 .hero-copy h1 {
-  font-size: clamp(1.58rem, 2.8vw, 2.45rem);
+  font-size: clamp(1.58rem, 3.1vw, 3.2rem);
   line-height: 0.98;
 }
 
 .subtitle {
   max-width: 560px;
   margin: 5px auto 0;
-  font-size: 0.82rem;
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
   color: var(--muted);
   line-height: 1.42;
 }
@@ -186,7 +186,7 @@ a {
 .interaction-row {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
-  gap: 12px;
+  gap: clamp(12px, 1.8vw, 22px);
   align-items: stretch;
 }
 
@@ -307,16 +307,16 @@ a {
 .chat-card {
   display: flex;
   flex-direction: column;
-  min-height: 390px;
-  height: 390px;
+  min-height: clamp(390px, 52vh, 560px);
+  height: clamp(390px, 52vh, 560px);
   background: var(--panel-soft);
 }
 
 .example-card {
   display: flex;
   flex-direction: column;
-  min-height: 390px;
-  height: 390px;
+  min-height: clamp(390px, 52vh, 560px);
+  height: clamp(390px, 52vh, 560px);
 }
 
 .transcript {
@@ -528,7 +528,7 @@ a {
 
 .report-frame {
   width: 100%;
-  height: 720px;
+  height: clamp(620px, 78vh, 920px);
   margin-top: 16px;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -537,6 +537,16 @@ a {
 
 .muted {
   color: var(--muted);
+}
+
+@media (min-width: 1500px) {
+  .interaction-row {
+    grid-template-columns: minmax(0, 1.12fr) minmax(420px, 0.88fr);
+  }
+
+  .hero-copy {
+    max-width: 960px;
+  }
 }
 
 @media (max-width: 900px) {
