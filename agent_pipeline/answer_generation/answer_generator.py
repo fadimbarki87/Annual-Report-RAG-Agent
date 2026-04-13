@@ -13,11 +13,18 @@ from agent_pipeline.answer_generation.scope_guard import (
     UNSUPPORTED_RESPONSE,
     classify_question_gate,
 )
+from agent_pipeline.answer_generation.structured_answerer import (
+    maybe_answer_revenue_question,
+)
 from agent_pipeline.answer_generation.settings import (
     AnswerGenerationSettings,
     load_answer_generation_settings,
 )
-from agent_pipeline.retrieval.document_registry import detect_document_ids_in_text
+from agent_pipeline.retrieval.document_registry import (
+    detect_document_ids_in_text,
+    document_info,
+    resolve_document_ids,
+)
 from agent_pipeline.retrieval.retrieval_service import retrieve_chunks
 
 
@@ -28,6 +35,8 @@ Scope:
 - The only supported documents are the 2024 annual reports for Mercedes-Benz Group, BMW Group, Volkswagen Group, Siemens AG, and Robert Bosch GmbH.
 - Never use external knowledge.
 - Never guess missing values, relationships, reporting periods, or conclusions.
+- If the question names specific companies, answer only for those companies and do not introduce any other company.
+- If the question asks for a comparison, ranking, or computation across named companies, use only those named companies.
 
 Refusal behavior:
 - If the question is outside the annual-report scope, answer exactly: Unsupported: This question is outside the scope of the 2024 annual reports.
@@ -58,9 +67,22 @@ Evidence
 """
 
 
-def build_user_prompt(question: str, context: str) -> str:
+def build_user_prompt(
+    question: str,
+    context: str,
+    *,
+    requested_company_names: list[str] | None = None,
+) -> str:
+    company_scope = ""
+    if requested_company_names:
+        company_scope = (
+            "\nRequested companies:\n"
+            + ", ".join(requested_company_names)
+            + "\nOnly answer for these companies unless a requested company is missing from the evidence."
+        )
     return f"""Question:
 {question}
+{company_scope}
 
 Retrieved evidence chunks:
 {context}
@@ -159,6 +181,16 @@ def answer_question(
     inferred_document_ids = (
         detect_document_ids_in_text(question) if not explicit_company_filters else []
     )
+    requested_document_ids = (
+        resolve_document_ids(explicit_company_filters)
+        if explicit_company_filters
+        else inferred_document_ids
+    )
+    requested_company_names = [
+        document.company_name
+        for document_id in requested_document_ids
+        if (document := document_info(document_id)) is not None
+    ]
     is_location_question = is_evidence_location_question(question)
     effective_retrieval_limit = retrieval_limit or settings.retrieval_limit
     if is_location_question:
@@ -167,14 +199,22 @@ def answer_question(
     chunks = retrieve_chunks(
         query=question,
         company_filters=explicit_company_filters,
-        document_ids=inferred_document_ids,
+        document_ids=requested_document_ids,
         chunk_types=chunk_types,
         limit=effective_retrieval_limit,
-        balance_across_documents=len(inferred_document_ids) > 1,
+        balance_across_documents=len(requested_document_ids) > 1,
     )
     scores = [chunk.score for chunk in chunks]
     if not has_strong_retrieval(scores, minimum_top_score=settings.minimum_top_score):
         return NO_STRONG_ANSWER_RESPONSE
+
+    structured_response = maybe_answer_revenue_question(
+        question=question,
+        chunks=chunks,
+        requested_document_ids=requested_document_ids,
+    )
+    if structured_response is not None:
+        return structured_response
 
     if is_location_question:
         location_response = answer_location_question(
@@ -198,7 +238,14 @@ def answer_question(
     response = request_chat_completion(
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": build_user_prompt(question, context)},
+            {
+                "role": "user",
+                "content": build_user_prompt(
+                    question,
+                    context,
+                    requested_company_names=requested_company_names,
+                ),
+            },
         ],
         settings=settings,
     )
