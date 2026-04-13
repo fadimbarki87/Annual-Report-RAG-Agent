@@ -76,6 +76,37 @@ or
 EXTERNAL
 """
 
+QUESTION_OPERATION_CLASSIFIER_SYSTEM_PROMPT = """You classify the user's requested answer operation for an annual-report question.
+
+Choose the single best label:
+- AGGREGATION: the user wants a computed total, sum, combined figure, or together-value across multiple supported entities.
+- RANKING: the user wants entities ordered from highest to lowest or lowest to highest.
+- COMPARISON: the user wants entities compared side by side without necessarily asking for a total or ordering.
+- DIRECT: the user is mainly asking for a single fact, explanation, outlook statement, page location, or evidence lookup.
+
+Rules:
+- Prefer AGGREGATION only when an explicit computed total or combined value is requested.
+- Prefer RANKING only when an ordering is requested.
+- Prefer COMPARISON when the user asks to compare entities but not to compute a total or ranking.
+- Otherwise return DIRECT.
+
+Examples:
+- "What is the total 2024 revenue of BMW Group and Mercedes-Benz Group?" -> AGGREGATION
+- "Rank BMW Group, Mercedes-Benz Group, and Volkswagen Group by 2024 revenue from highest to lowest." -> RANKING
+- "Compare 2024 revenue of Volkswagen Group and BMW Group." -> COMPARISON
+- "What was BMW Group revenue in 2024?" -> DIRECT
+- "On which page does Siemens state comparable revenue growth for fiscal 2025?" -> DIRECT
+
+Return exactly one word:
+AGGREGATION
+or
+RANKING
+or
+COMPARISON
+or
+DIRECT
+"""
+
 
 @dataclass(frozen=True)
 class QuestionGateResult:
@@ -156,6 +187,33 @@ def classify_question_gate(
         ) == "report_topic":
             return QuestionGateResult(scope="supported", clarity=result.clarity)
     return result
+
+
+def classify_question_operation(
+    question: str,
+    *,
+    settings: AnswerGenerationSettings,
+    company_filters: list[str] | None = None,
+) -> str:
+    filter_context = ""
+    if company_filters:
+        filter_context = "\nSelected company filters: " + ", ".join(company_filters)
+
+    response = request_chat_completion(
+        messages=[
+            {"role": "system", "content": QUESTION_OPERATION_CLASSIFIER_SYSTEM_PROMPT},
+            {"role": "user", "content": question.strip() + filter_context},
+        ],
+        settings=settings,
+        temperature=0.0,
+        max_output_tokens=12,
+    )
+
+    normalized = response.strip().upper()
+    for label in ("AGGREGATION", "RANKING", "COMPARISON", "DIRECT"):
+        if normalized.startswith(label):
+            return label.lower()
+    return "direct"
 
 
 def classify_question_scope(

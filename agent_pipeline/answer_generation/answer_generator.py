@@ -12,9 +12,7 @@ from agent_pipeline.answer_generation.scope_guard import (
     NO_STRONG_ANSWER_RESPONSE,
     UNSUPPORTED_RESPONSE,
     classify_question_gate,
-)
-from agent_pipeline.answer_generation.structured_answerer import (
-    maybe_answer_revenue_question,
+    classify_question_operation,
 )
 from agent_pipeline.answer_generation.settings import (
     AnswerGenerationSettings,
@@ -66,12 +64,12 @@ Evidence
 - Use one line per evidence item in the format: - "Exact quote" (Company, source_file.pdf, page 123)
 """
 
-
 def build_user_prompt(
     question: str,
     context: str,
     *,
     requested_company_names: list[str] | None = None,
+    computation_guidance: str = "",
 ) -> str:
     company_scope = ""
     if requested_company_names:
@@ -83,11 +81,32 @@ def build_user_prompt(
     return f"""Question:
 {question}
 {company_scope}
+{computation_guidance}
 
 Retrieved evidence chunks:
 {context}
 
 Write the answer using only the retrieved evidence chunks."""
+
+
+def build_computation_guidance(operation: str) -> str:
+    guidance: list[str] = []
+    if operation == "aggregation":
+        guidance.append(
+            "Computation instruction:\n- Extract the requested company values from the evidence and compute the total explicitly.\n- Do not stop after listing the individual company values.\n- Include a final line in the Answer section in the form: - Total: <computed value>."
+        )
+    elif operation == "ranking":
+        guidance.append(
+            "Computation instruction:\n- Extract the requested company values from the evidence and rank only those requested companies from highest to lowest.\n- Include the ordered ranking explicitly in the Answer section."
+        )
+    elif operation == "comparison":
+        guidance.append(
+            "Computation instruction:\n- Compare only the requested companies.\n- State each requested company value clearly and identify which is higher when the evidence supports it."
+        )
+
+    if not guidance:
+        return ""
+    return "\n" + "\n".join(guidance)
 
 
 def normalize_special_refusal(response: str) -> str:
@@ -192,8 +211,20 @@ def answer_question(
         if (document := document_info(document_id)) is not None
     ]
     is_location_question = is_evidence_location_question(question)
+    question_operation = classify_question_operation(
+        question,
+        settings=settings,
+        company_filters=company_filters,
+    )
+    is_computation_question = question_operation in {
+        "aggregation",
+        "ranking",
+        "comparison",
+    }
     effective_retrieval_limit = retrieval_limit or settings.retrieval_limit
     if is_location_question:
+        effective_retrieval_limit = max(effective_retrieval_limit, 20)
+    if is_computation_question and len(requested_document_ids) > 1:
         effective_retrieval_limit = max(effective_retrieval_limit, 20)
 
     chunks = retrieve_chunks(
@@ -207,14 +238,6 @@ def answer_question(
     scores = [chunk.score for chunk in chunks]
     if not has_strong_retrieval(scores, minimum_top_score=settings.minimum_top_score):
         return NO_STRONG_ANSWER_RESPONSE
-
-    structured_response = maybe_answer_revenue_question(
-        question=question,
-        chunks=chunks,
-        requested_document_ids=requested_document_ids,
-    )
-    if structured_response is not None:
-        return structured_response
 
     if is_location_question:
         location_response = answer_location_question(
@@ -244,6 +267,9 @@ def answer_question(
                     question,
                     context,
                     requested_company_names=requested_company_names,
+                    computation_guidance=build_computation_guidance(
+                        question_operation
+                    ),
                 ),
             },
         ],
