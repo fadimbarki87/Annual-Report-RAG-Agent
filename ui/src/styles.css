@@ -533,93 +533,17 @@ a {
   white-space: nowrap;
 }
 
-.pdf-preview {
+.report-frame-shell {
   margin-top: 16px;
 }
 
-.pdf-toolbar,
-.pdf-toolbar-group,
-.pdf-page-form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pdf-toolbar {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.pdf-toolbar button {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--soft);
-  cursor: pointer;
-}
-
-.pdf-toolbar button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.pdf-page-form input {
-  width: 72px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
-  text-align: center;
-}
-
-.pdf-page-form span {
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-
-.pdf-canvas-shell {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 540px;
-  padding: 16px;
+.report-frame {
+  width: 100%;
+  height: clamp(620px, 78vh, 920px);
   border: 1px solid var(--line);
   border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
-    #111;
-  overflow: hidden;
-}
-
-.pdf-canvas-shell canvas {
+  background: #111;
   display: block;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
-  background: white;
-}
-
-.pdf-status {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-  margin: 0;
-  padding: 8px 10px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.62);
-  color: var(--soft);
-  font-size: 0.78rem;
-}
-
-.pdf-loading-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(17, 17, 17, 0.16), rgba(17, 17, 17, 0.3));
-  pointer-events: none;
 }
 
 .report-help {
@@ -631,30 +555,6 @@ a {
 
 .muted {
   color: var(--muted);
-}
-
-.standalone-viewer-page {
-  min-height: 100vh;
-}
-
-.standalone-viewer-card {
-  padding: 18px;
-}
-
-.standalone-viewer-header h1 {
-  margin: 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: clamp(1.7rem, 2vw, 2.4rem);
-}
-
-.standalone-viewer-header p {
-  margin: 4px 0 0;
-  color: var(--muted);
-}
-
-.report-preview-fullscreen .pdf-canvas-shell {
-  min-height: 76vh;
 }
 
 @media (min-width: 1500px) {
@@ -707,12 +607,7 @@ a {
     justify-content: flex-start;
   }
 
-  .pdf-canvas-shell {
-    min-height: 440px;
-    padding: 12px;
-  }
-
-  .report-preview-fullscreen .pdf-canvas-shell {
-    min-height: 66vh;
+  .report-frame {
+    height: 560px;
   }
 }

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import PdfPreview from './PdfPreview'
 
 const QUESTION_BANK_URL = '/demo_questions.json'
 const PHOTO_CANDIDATES = ['/profile-photo.png', '/profile-photo.jpg', '/profile-photo.jpeg']
 const DEFAULT_ANSWER_API_URL = '/api/answer'
+const PDF_VIEWER_FRAGMENT = '#toolbar=1&navpanes=1&scrollbar=1&view=FitH'
 
 const REPORTS = [
   {
@@ -95,10 +95,6 @@ function buildReportUrl(apiBaseUrl, fileName) {
   return `${stripTrailingSlashes(apiBaseUrl)}${relativePath}`
 }
 
-function buildStandaloneViewerUrl(reportId) {
-  return `?report=${encodeURIComponent(reportId)}`
-}
-
 function extractText(content) {
   if (!content || typeof content !== 'string') {
     return ''
@@ -165,32 +161,11 @@ export default function App() {
   const reportsSectionRef = useRef(null)
   const answerApiUrl = useMemo(() => resolveAnswerApiUrl(), [])
   const reportApiBaseUrl = useMemo(() => resolveApiBaseUrl(answerApiUrl), [answerApiUrl])
-  const standaloneReportId = useMemo(() => {
-    if (typeof window === 'undefined') {
-      return ''
-    }
-    return new URLSearchParams(window.location.search).get('report') || ''
-  }, [])
-  const standaloneReport = useMemo(
-    () => REPORTS.find((report) => report.id === standaloneReportId) || null,
-    [standaloneReportId],
-  )
-  const homeHref = useMemo(() => {
-    if (typeof window === 'undefined') {
-      return '/'
-    }
-    return window.location.pathname
-  }, [])
 
   useEffect(() => {
     let active = true
 
     async function loadQuestionBank() {
-      if (standaloneReport) {
-        setIsLoadingBank(false)
-        return
-      }
-
       try {
         const response = await fetch(QUESTION_BANK_URL)
         if (!response.ok) {
@@ -218,7 +193,7 @@ export default function App() {
     return () => {
       active = false
     }
-  }, [standaloneReport])
+  }, [])
 
   useEffect(() => {
     if (transcriptRef.current) {
@@ -318,40 +293,6 @@ export default function App() {
   }
 
   const photoSource = PHOTO_CANDIDATES[photoIndex] || '/portrait-placeholder.svg'
-
-  if (standaloneReport) {
-    const reportUrl = buildReportUrl(reportApiBaseUrl, standaloneReport.file)
-
-    return (
-      <div className="app-shell">
-        <div className="background-glow background-glow-a" />
-        <div className="background-glow background-glow-b" />
-
-        <main className="page-column standalone-viewer-page">
-          <section className="compact-card standalone-viewer-card">
-            <header className="report-card-header standalone-viewer-header">
-              <div>
-                <h1>{standaloneReport.company}</h1>
-                <p>In-app PDF viewer</p>
-              </div>
-              <div className="report-card-actions">
-                <a href={homeHref}>Back to main page</a>
-                <a href={reportUrl} download>
-                  Download PDF
-                </a>
-              </div>
-            </header>
-
-            <PdfPreview
-              fileUrl={reportUrl}
-              title={`${standaloneReport.company} annual report`}
-              className="report-preview-fullscreen"
-            />
-          </section>
-        </main>
-      </div>
-    )
-  }
 
   return (
     <div className="app-shell">
@@ -512,7 +453,7 @@ export default function App() {
           <div className="reports-grid">
             {REPORTS.map((report) => {
               const reportUrl = buildReportUrl(reportApiBaseUrl, report.file)
-              const standaloneViewerUrl = buildStandaloneViewerUrl(report.id)
+              const reportViewerUrl = `${reportUrl}${PDF_VIEWER_FRAGMENT}`
 
               return (
                 <article className="report-card" key={report.id}>
@@ -521,7 +462,7 @@ export default function App() {
                       <h3>{report.company}</h3>
                     </div>
                     <div className="report-card-actions">
-                      <a href={standaloneViewerUrl} target="_blank" rel="noreferrer">
+                      <a href={reportUrl} target="_blank" rel="noreferrer">
                         Open PDF
                       </a>
                       <a href={reportUrl} download>
@@ -530,10 +471,24 @@ export default function App() {
                     </div>
                   </div>
 
-                  <PdfPreview fileUrl={reportUrl} title={`${report.company} annual report`} />
+                  <div className="report-frame-shell">
+                    <object
+                      className="report-frame"
+                      data={reportViewerUrl}
+                      type="application/pdf"
+                      aria-label={`${report.company} annual report`}
+                    >
+                      <iframe
+                        className="report-frame"
+                        src={reportViewerUrl}
+                        title={`${report.company} annual report`}
+                        loading="lazy"
+                      />
+                    </object>
+                  </div>
 
                   <p className="report-help">
-                    Use Open PDF for a larger in-app viewer, or Download PDF for the original file.
+                    If the preview does not load, use Open PDF to view it in a new tab.
                   </p>
                 </article>
               )
