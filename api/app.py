@@ -7,7 +7,7 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from agent_pipeline.answer_generation.answer_generator import answer_question
@@ -76,13 +76,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if REPORTS_DIR.exists():
-    app.mount("/reports", StaticFiles(directory=REPORTS_DIR), name="reports")
-
-
 @app.get("/health")
 def healthcheck() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.api_route("/reports/{file_name}", methods=["GET", "HEAD"])
+def serve_report(file_name: str) -> FileResponse:
+    safe_name = Path(file_name).name
+    report_path = (REPORTS_DIR / safe_name).resolve()
+
+    if not REPORTS_DIR.exists():
+        raise HTTPException(status_code=404, detail="Reports directory is not available.")
+    if safe_name != file_name:
+        raise HTTPException(status_code=404, detail="Report not found.")
+    if report_path.parent != REPORTS_DIR.resolve():
+        raise HTTPException(status_code=404, detail="Report not found.")
+    if report_path.suffix.lower() != ".pdf" or not report_path.exists():
+        raise HTTPException(status_code=404, detail="Report not found.")
+
+    # Serve PDFs explicitly so browsers get stable inline display headers
+    # instead of relying on generic static-file defaults.
+    response = FileResponse(report_path, media_type="application/pdf")
+    response.headers["Content-Disposition"] = f'inline; filename="{safe_name}"'
+    response.headers["Cache-Control"] = "public, max-age=3600"
+    response.headers["Accept-Ranges"] = "bytes"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    return response
 
 
 @app.get("/api/companies")

@@ -472,19 +472,12 @@ export default function App() {
                   </div>
 
                   <div className="report-frame-shell">
-                    <object
+                    <iframe
                       className="report-frame"
-                      data={reportViewerUrl}
-                      type="application/pdf"
-                      aria-label={`${report.company} annual report`}
-                    >
-                      <iframe
-                        className="report-frame"
-                        src={reportViewerUrl}
-                        title={`${report.company} annual report`}
-                        loading="lazy"
-                      />
-                    </object>
+                      src={reportViewerUrl}
+                      title={`${report.company} annual report`}
+                      loading="lazy"
+                    />
                   </div>
 
                   <p className="report-help">
