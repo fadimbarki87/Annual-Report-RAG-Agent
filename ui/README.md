@@ -42,6 +42,13 @@ Start the backend API from the project root:
 
 During local development Vite proxies `/api/*` requests to `http://127.0.0.1:8000`.
 
+For deployed environments, you can point the UI at a remote backend with either:
+
+- `VITE_ANSWER_API_URL=https://your-backend.example.com/api/answer`
+- `VITE_API_BASE_URL=https://your-backend.example.com`
+
+The report preview and download links now follow the same backend origin as the answer API.
+
 ## Personal Photo
 
 If you want to show your own photo in the hero, place one of these files in `ui/public`:

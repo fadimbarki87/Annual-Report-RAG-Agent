@@ -521,18 +521,36 @@ a {
   padding: 18px;
 }
 
+.report-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .report-card-header a {
   font-size: 0.84rem;
   white-space: nowrap;
 }
 
+.report-frame-shell {
+  margin-top: 16px;
+}
+
 .report-frame {
   width: 100%;
   height: clamp(620px, 78vh, 920px);
-  margin-top: 16px;
   border: 1px solid var(--line);
   border-radius: 18px;
   background: #111;
+  display: block;
+}
+
+.report-help {
+  margin: 10px 2px 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.42;
 }
 
 .muted {

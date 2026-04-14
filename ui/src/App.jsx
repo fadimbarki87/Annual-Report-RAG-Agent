@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 const QUESTION_BANK_URL = '/demo_questions.json'
 const PHOTO_CANDIDATES = ['/profile-photo.png', '/profile-photo.jpg', '/profile-photo.jpeg']
+const DEFAULT_ANSWER_API_URL = '/api/answer'
+const PDF_VIEWER_FRAGMENT = '#toolbar=1&navpanes=1&scrollbar=1&view=FitH'
 
 const REPORTS = [
   {
@@ -37,6 +39,60 @@ const starterMessage = {
   content:
     'Hi. Ask me anything about annual reports of Volkswagen, BMW, Mercedes-Benz, Siemens, and Bosch.',
   meta: 'Grounded responses only',
+}
+
+function stripTrailingSlashes(value) {
+  return typeof value === 'string' ? value.replace(/\/+$/, '') : ''
+}
+
+function resolveAnswerApiUrl() {
+  const configuredAnswerUrl = extractText(import.meta.env.VITE_ANSWER_API_URL)
+  if (configuredAnswerUrl) {
+    return configuredAnswerUrl
+  }
+
+  const configuredApiBaseUrl = extractText(import.meta.env.VITE_API_BASE_URL)
+  if (configuredApiBaseUrl) {
+    return `${stripTrailingSlashes(configuredApiBaseUrl)}/api/answer`
+  }
+
+  return DEFAULT_ANSWER_API_URL
+}
+
+function resolveApiBaseUrl(answerApiUrl) {
+  const sanitizedAnswerUrl =
+    typeof answerApiUrl === 'string' ? answerApiUrl.split('#')[0].split('?')[0] : ''
+  if (!sanitizedAnswerUrl) {
+    return ''
+  }
+
+  const basePath = stripTrailingSlashes(sanitizedAnswerUrl.replace(/\/api\/answer\/?$/, ''))
+  if (!basePath) {
+    return ''
+  }
+
+  if (basePath.startsWith('/')) {
+    return basePath
+  }
+
+  try {
+    const resolvedUrl = new URL(basePath)
+    resolvedUrl.hash = ''
+    resolvedUrl.search = ''
+    resolvedUrl.pathname = stripTrailingSlashes(resolvedUrl.pathname)
+    return stripTrailingSlashes(resolvedUrl.toString())
+  } catch {
+    return ''
+  }
+}
+
+function buildReportUrl(apiBaseUrl, fileName) {
+  const relativePath = `/reports/${encodeURIComponent(fileName)}`
+  if (!apiBaseUrl) {
+    return relativePath
+  }
+
+  return `${stripTrailingSlashes(apiBaseUrl)}${relativePath}`
 }
 
 function extractText(content) {
@@ -103,6 +159,8 @@ export default function App() {
   const [photoIndex, setPhotoIndex] = useState(0)
   const transcriptRef = useRef(null)
   const reportsSectionRef = useRef(null)
+  const answerApiUrl = useMemo(() => resolveAnswerApiUrl(), [])
+  const reportApiBaseUrl = useMemo(() => resolveApiBaseUrl(answerApiUrl), [answerApiUrl])
 
   useEffect(() => {
     let active = true
@@ -163,7 +221,7 @@ export default function App() {
     setIsSending(true)
 
     try {
-      const response = await fetch(import.meta.env.VITE_ANSWER_API_URL || '/api/answer', {
+      const response = await fetch(answerApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -393,24 +451,48 @@ export default function App() {
           </div>
 
           <div className="reports-grid">
-            {REPORTS.map((report) => (
-              <article className="report-card" key={report.id}>
-                <div className="report-card-header">
-                  <div>
-                    <h3>{report.company}</h3>
-                  </div>
-                  <a href={`/reports/${report.file}`} download>
-                    Download PDF
-                  </a>
-                </div>
+            {REPORTS.map((report) => {
+              const reportUrl = buildReportUrl(reportApiBaseUrl, report.file)
+              const reportViewerUrl = `${reportUrl}${PDF_VIEWER_FRAGMENT}`
 
-                <iframe
-                  className="report-frame"
-                  src={`/reports/${report.file}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`}
-                  title={`${report.company} annual report`}
-                />
-              </article>
-            ))}
+              return (
+                <article className="report-card" key={report.id}>
+                  <div className="report-card-header">
+                    <div>
+                      <h3>{report.company}</h3>
+                    </div>
+                    <div className="report-card-actions">
+                      <a href={reportUrl} target="_blank" rel="noreferrer">
+                        Open PDF
+                      </a>
+                      <a href={reportUrl} download>
+                        Download PDF
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="report-frame-shell">
+                    <object
+                      className="report-frame"
+                      data={reportViewerUrl}
+                      type="application/pdf"
+                      aria-label={`${report.company} annual report`}
+                    >
+                      <iframe
+                        className="report-frame"
+                        src={reportViewerUrl}
+                        title={`${report.company} annual report`}
+                        loading="lazy"
+                      />
+                    </object>
+                  </div>
+
+                  <p className="report-help">
+                    If the preview does not load, use Open PDF to view it in a new tab.
+                  </p>
+                </article>
+              )
+            })}
           </div>
         </section>
       </main>
