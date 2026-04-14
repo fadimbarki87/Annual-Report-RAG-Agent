@@ -10,26 +10,31 @@ const REPORTS = [
     id: 'volkswagen_2024',
     company: 'Volkswagen Group',
     file: 'volkswagen_2024.pdf',
+    viewerFile: 'volkswagen_2024.pdf',
   },
   {
     id: 'mercedes_2024',
     company: 'Mercedes-Benz Group',
     file: 'mercedes_2024.pdf',
+    viewerFile: 'mercedes_2024_view.pdf',
   },
   {
     id: 'bmw_2024',
     company: 'BMW Group',
     file: 'bmw_2024.pdf',
+    viewerFile: 'bmw_2024_view.pdf',
   },
   {
     id: 'siemens_2024',
     company: 'Siemens AG',
     file: 'siemens_2024.pdf',
+    viewerFile: 'siemens_2024.pdf',
   },
   {
     id: 'bosch_2024',
     company: 'Robert Bosch GmbH',
     file: 'bosch_2024.pdf',
+    viewerFile: 'bosch_2024.pdf',
   },
 ]
 
@@ -452,8 +457,9 @@ export default function App() {
 
           <div className="reports-grid">
             {REPORTS.map((report) => {
-              const reportUrl = buildReportUrl(reportApiBaseUrl, report.file)
-              const reportViewerUrl = `${reportUrl}${PDF_VIEWER_FRAGMENT}`
+              const downloadUrl = buildReportUrl(reportApiBaseUrl, report.file)
+              const viewerUrl = buildReportUrl(reportApiBaseUrl, report.viewerFile || report.file)
+              const reportViewerUrl = `${viewerUrl}${PDF_VIEWER_FRAGMENT}`
 
               return (
                 <article className="report-card" key={report.id}>
@@ -462,10 +468,10 @@ export default function App() {
                       <h3>{report.company}</h3>
                     </div>
                     <div className="report-card-actions">
-                      <a href={reportUrl} target="_blank" rel="noreferrer">
+                      <a href={viewerUrl} target="_blank" rel="noreferrer">
                         Open PDF
                       </a>
-                      <a href={reportUrl} download>
+                      <a href={downloadUrl} download>
                         Download PDF
                       </a>
                     </div>
