@@ -16,10 +16,11 @@ const REPORTS = [
     company: 'Mercedes-Benz Group',
     file: 'mercedes_2024.pdf',
   },
+  // Browser preview is more stable with the normalized copy of BMW's report.
   {
     id: 'bmw_2024',
     company: 'BMW Group',
-    file: 'bmw_2024.pdf',
+    file: 'bmw_2024_web.pdf',
   },
   {
     id: 'siemens_2024',
