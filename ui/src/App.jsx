@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import bundledQuestionBank from './data/demo_questions.json'
 
-const QUESTION_BANK_URL = '/demo_questions.json'
-const PHOTO_CANDIDATES = ['/profile-photo.png', '/profile-photo.jpg', '/profile-photo.jpeg']
 const DEFAULT_ANSWER_API_URL = '/api/answer'
 const PDF_VIEWER_FRAGMENT = '#toolbar=1&navpanes=1&scrollbar=1&view=FitH'
+const QUESTION_BANK_STORAGE_KEY = 'annual-report-rag-question-bank'
 
 const REPORTS = [
   {
@@ -46,8 +46,34 @@ const starterMessage = {
   meta: 'Grounded responses only',
 }
 
+const STATIC_BASE_URL = normalizeBaseUrl(extractText(import.meta.env.BASE_URL))
+const QUESTION_BANK_URL = buildStaticAssetUrl('demo_questions.json')
+const PHOTO_CANDIDATES = [
+  'profile-photo.png',
+  'profile-photo.jpg',
+  'profile-photo.jpeg',
+].map(buildStaticAssetUrl)
+const PORTRAIT_PLACEHOLDER_URL = buildStaticAssetUrl('portrait-placeholder.svg')
+const BUNDLED_QUESTION_BANK = Array.isArray(bundledQuestionBank?.categories)
+  ? bundledQuestionBank.categories
+  : []
+
 function stripTrailingSlashes(value) {
   return typeof value === 'string' ? value.replace(/\/+$/, '') : ''
+}
+
+function normalizeBaseUrl(value) {
+  const sanitized = extractText(value)
+  if (!sanitized) {
+    return '/'
+  }
+
+  return sanitized.endsWith('/') ? sanitized : `${sanitized}/`
+}
+
+function buildStaticAssetUrl(assetPath) {
+  const sanitizedPath = extractText(assetPath).replace(/^\/+/, '')
+  return `${STATIC_BASE_URL}${sanitizedPath}`
 }
 
 function resolveAnswerApiUrl() {
@@ -111,6 +137,140 @@ function normalizeList(items) {
   return Array.isArray(items) ? items.filter(Boolean) : []
 }
 
+function delay(milliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds)
+  })
+}
+
+function isAbortError(error) {
+  return Boolean(error && typeof error === 'object' && 'name' in error && error.name === 'AbortError')
+}
+
+function readCachedQuestionBank() {
+  if (typeof window === 'undefined') {
+    return []
+  }
+
+  try {
+    const cached = window.localStorage.getItem(QUESTION_BANK_STORAGE_KEY)
+    if (!cached) {
+      return []
+    }
+
+    const parsed = JSON.parse(cached)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+function cacheQuestionBank(categories) {
+  if (typeof window === 'undefined' || !Array.isArray(categories) || !categories.length) {
+    return
+  }
+
+  try {
+    window.localStorage.setItem(QUESTION_BANK_STORAGE_KEY, JSON.stringify(categories))
+  } catch {
+    // Ignore storage failures; the UI can still function without cached examples.
+  }
+}
+
+async function fetchJsonWithRetry(url, { attempts = 3, signal } = {}) {
+  let lastError = null
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        cache: 'no-store',
+        signal,
+      })
+      if (!response.ok) {
+        throw new Error(`Request failed with HTTP ${response.status}`)
+      }
+
+      return await response.json()
+    } catch (error) {
+      if (isAbortError(error)) {
+        throw error
+      }
+
+      lastError = error
+      if (attempt < attempts) {
+        await delay(attempt * 350)
+      }
+    }
+  }
+
+  throw lastError || new Error('JSON request failed.')
+}
+
+function preloadImage(url, signal) {
+  return new Promise((resolve, reject) => {
+    if (typeof Image === 'undefined') {
+      resolve(url)
+      return
+    }
+
+    const image = new Image()
+
+    function cleanup() {
+      image.onload = null
+      image.onerror = null
+      if (signal) {
+        signal.removeEventListener('abort', handleAbort)
+      }
+    }
+
+    function handleAbort() {
+      cleanup()
+      reject(new DOMException('Image preload aborted.', 'AbortError'))
+    }
+
+    image.onload = () => {
+      cleanup()
+      resolve(url)
+    }
+
+    image.onerror = () => {
+      cleanup()
+      reject(new Error(`Image could not be loaded: ${url}`))
+    }
+
+    if (signal?.aborted) {
+      handleAbort()
+      return
+    }
+
+    if (signal) {
+      signal.addEventListener('abort', handleAbort, { once: true })
+    }
+
+    image.src = url
+  })
+}
+
+async function resolvePortraitSource(candidates, { attemptsPerCandidate = 2, signal } = {}) {
+  for (const candidate of candidates) {
+    for (let attempt = 1; attempt <= attemptsPerCandidate; attempt += 1) {
+      try {
+        return await preloadImage(candidate, signal)
+      } catch (error) {
+        if (isAbortError(error)) {
+          throw error
+        }
+
+        if (attempt < attemptsPerCandidate) {
+          await delay(attempt * 250)
+        }
+      }
+    }
+  }
+
+  return PORTRAIT_PLACEHOLDER_URL
+}
+
 function formatResource(resource) {
   if (!resource || typeof resource !== 'object') {
     return ''
@@ -155,38 +315,53 @@ function formatEvidenceItem(item) {
 }
 
 export default function App() {
-  const [questionBank, setQuestionBank] = useState([])
-  const [isLoadingBank, setIsLoadingBank] = useState(true)
+  const initialQuestionBank = useMemo(() => {
+    const cachedQuestionBank = readCachedQuestionBank()
+    return cachedQuestionBank.length ? cachedQuestionBank : BUNDLED_QUESTION_BANK
+  }, [])
+  const [questionBank, setQuestionBank] = useState(initialQuestionBank)
+  const [isLoadingBank, setIsLoadingBank] = useState(initialQuestionBank.length === 0)
   const [bankError, setBankError] = useState('')
   const [messages, setMessages] = useState([starterMessage])
   const [input, setInput] = useState('')
   const [isSending, setIsSending] = useState(false)
-  const [photoIndex, setPhotoIndex] = useState(0)
+  const [photoSource, setPhotoSource] = useState(PORTRAIT_PLACEHOLDER_URL)
+  const [isPhotoReady, setIsPhotoReady] = useState(false)
   const transcriptRef = useRef(null)
   const reportsSectionRef = useRef(null)
   const answerApiUrl = useMemo(() => resolveAnswerApiUrl(), [])
   const reportApiBaseUrl = useMemo(() => resolveApiBaseUrl(answerApiUrl), [answerApiUrl])
 
   useEffect(() => {
+    const controller = new AbortController()
     let active = true
 
     async function loadQuestionBank() {
       try {
-        const response = await fetch(QUESTION_BANK_URL)
-        if (!response.ok) {
-          throw new Error(`Question bank request failed with HTTP ${response.status}`)
-        }
-        const data = await response.json()
+        const data = await fetchJsonWithRetry(QUESTION_BANK_URL, {
+          attempts: 3,
+          signal: controller.signal,
+        })
         if (!active) {
           return
         }
-        setQuestionBank(Array.isArray(data.categories) ? data.categories : [])
+        const categories = Array.isArray(data.categories) ? data.categories : []
+        setQuestionBank(categories)
+        cacheQuestionBank(categories)
         setBankError('')
       } catch (error) {
-        if (!active) {
+        if (!active || isAbortError(error)) {
           return
         }
-        setBankError('Example question bank could not be loaded.')
+
+        const cachedCategories = readCachedQuestionBank()
+        if (cachedCategories.length) {
+          setQuestionBank(cachedCategories)
+          setBankError('')
+        } else {
+          setQuestionBank(BUNDLED_QUESTION_BANK)
+          setBankError('')
+        }
       } finally {
         if (active) {
           setIsLoadingBank(false)
@@ -197,6 +372,42 @@ export default function App() {
     loadQuestionBank()
     return () => {
       active = false
+      controller.abort()
+    }
+  }, [])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    let active = true
+
+    async function loadPortrait() {
+      try {
+        const resolvedSource = await resolvePortraitSource(PHOTO_CANDIDATES, {
+          attemptsPerCandidate: 2,
+          signal: controller.signal,
+        })
+        if (!active) {
+          return
+        }
+
+        setPhotoSource(resolvedSource)
+      } catch (error) {
+        if (!active || isAbortError(error)) {
+          return
+        }
+
+        setPhotoSource(PORTRAIT_PLACEHOLDER_URL)
+      } finally {
+        if (active) {
+          setIsPhotoReady(true)
+        }
+      }
+    }
+
+    loadPortrait()
+    return () => {
+      active = false
+      controller.abort()
     }
   }, [])
 
@@ -206,7 +417,7 @@ export default function App() {
     }
   }, [messages])
 
-  const displayedCategories = useMemo(() => questionBank, [questionBank])
+  const displayedCategories = questionBank
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -289,26 +500,23 @@ export default function App() {
   }
 
   function handlePhotoError() {
-    setPhotoIndex((current) => {
-      if (current >= PHOTO_CANDIDATES.length) {
-        return current
-      }
-      return current + 1
-    })
+    setPhotoSource(PORTRAIT_PLACEHOLDER_URL)
+    setIsPhotoReady(true)
   }
-
-  const photoSource = PHOTO_CANDIDATES[photoIndex] || '/portrait-placeholder.svg'
 
   return (
     <div className="app-shell">
       <div className="background-glow background-glow-a" />
       <div className="background-glow background-glow-b" />
+      <div className="background-mesh" aria-hidden="true" />
 
       <main className="page-column">
         <section className="hero-stack">
           <div className="hero-title-row">
             <article className="media-slot photo-slot">
-              <img src={photoSource} alt="Your portrait" onError={handlePhotoError} />
+              <div className={`portrait-frame ${isPhotoReady ? 'is-ready' : 'is-loading'}`}>
+                <img src={photoSource} alt="Your portrait" onError={handlePhotoError} />
+              </div>
             </article>
 
             <div className="hero-copy">
@@ -431,8 +639,8 @@ export default function App() {
                       <h3>{category.category_name}</h3>
                     </header>
 
-                <div className="question-list">
-                  {(category.cases || []).map((questionCase) => (
+                    <div className="question-list">
+                      {(category.cases || []).map((questionCase) => (
                         <button
                           key={questionCase.case_id}
                           type="button"

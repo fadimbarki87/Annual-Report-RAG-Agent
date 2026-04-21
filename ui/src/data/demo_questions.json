@@ -1,0 +1,130 @@
+{
+  "categories": [
+    {
+      "category_id": "simple_fact_lookup",
+      "category_name": "Simple Fact Lookup",
+      "cases": [
+        {
+          "case_id": "demo_bmw_revenue",
+          "question": "What were BMW Group revenues in 2024?"
+        },
+        {
+          "case_id": "demo_mercedes_revenue",
+          "question": "What was Mercedes-Benz Group revenue in 2024?"
+        },
+        {
+          "case_id": "demo_volkswagen_revenue",
+          "question": "What was Volkswagen Group sales revenue in 2024?"
+        }
+      ]
+    },
+    {
+      "category_id": "financial_kpi_lookup",
+      "category_name": "Financial KPI Lookup",
+      "cases": [
+        {
+          "case_id": "demo_bmw_profit_before_tax",
+          "question": "What was BMW Group profit before tax in 2024?"
+        },
+        {
+          "case_id": "demo_mercedes_free_cash_flow",
+          "question": "What was Mercedes-Benz free cash flow of the industrial business in 2024?"
+        },
+        {
+          "case_id": "demo_bosch_ebit_margin",
+          "question": "What EBIT margin from operations did Bosch Group report in 2024?"
+        }
+      ]
+    },
+    {
+      "category_id": "multi_company_comparison",
+      "category_name": "Multi-Company Comparison",
+      "cases": [
+        {
+          "case_id": "demo_bmw_mercedes_compare",
+          "question": "Compare 2024 revenue of BMW Group and Mercedes-Benz Group."
+        },
+        {
+          "case_id": "demo_volkswagen_bmw_compare",
+          "question": "Compare 2024 revenue of Volkswagen Group and BMW Group."
+        },
+        {
+          "case_id": "demo_bosch_siemens_compare",
+          "question": "Compare 2024 revenue of Bosch Group and Siemens."
+        }
+      ]
+    },
+    {
+      "category_id": "ranking_questions",
+      "category_name": "Ranking Questions",
+      "cases": [
+        {
+          "case_id": "demo_revenue_ranking_core",
+          "question": "Rank BMW Group, Mercedes-Benz Group, and Volkswagen Group by 2024 revenue from highest to lowest."
+        },
+        {
+          "case_id": "demo_revenue_ranking_industry",
+          "question": "Rank Bosch Group, Siemens, and BMW Group by 2024 revenue from highest to lowest."
+        },
+        {
+          "case_id": "demo_revenue_ranking_mixed",
+          "question": "Rank Volkswagen Group, Mercedes-Benz Group, and Bosch Group by 2024 revenue from highest to lowest."
+        }
+      ]
+    },
+    {
+      "category_id": "aggregation_questions",
+      "category_name": "Aggregation Questions",
+      "cases": [
+        {
+          "case_id": "demo_total_bmw_mercedes",
+          "question": "What is the total 2024 revenue of BMW Group and Mercedes-Benz Group?"
+        },
+        {
+          "case_id": "demo_total_bosch_siemens",
+          "question": "What is the total 2024 revenue of Bosch Group and Siemens?"
+        },
+        {
+          "case_id": "demo_total_mercedes_volkswagen",
+          "question": "What is the total 2024 revenue of Mercedes-Benz Group and Volkswagen Group?"
+        }
+      ]
+    },
+    {
+      "category_id": "source_and_page_lookup",
+      "category_name": "Source & Page Lookup",
+      "cases": [
+        {
+          "case_id": "demo_bmw_revenue_page",
+          "question": "On which page is BMW Group revenue for 2024 stated?"
+        },
+        {
+          "case_id": "demo_bosch_revenue_page",
+          "question": "On which page is Bosch Group sales revenue for 2024 stated?"
+        },
+        {
+          "case_id": "demo_siemens_outlook_page",
+          "question": "On which page does Siemens state comparable revenue growth for fiscal 2025?"
+        }
+      ]
+    },
+    {
+      "category_id": "outlook_and_guidance",
+      "category_name": "Outlook & Guidance",
+      "cases": [
+        {
+          "case_id": "demo_mercedes_2025_revenue_outlook",
+          "question": "What does Mercedes-Benz Group forecast for Group revenue in 2025?"
+        },
+        {
+          "case_id": "demo_bosch_2025_sales_outlook",
+          "question": "What sales revenue growth does Bosch expect for 2025?"
+        },
+        {
+          "case_id": "demo_siemens_2025_growth_outlook",
+          "question": "What comparable revenue growth does Siemens expect for fiscal 2025?"
+        }
+      ]
+    }
+  ]
+}
