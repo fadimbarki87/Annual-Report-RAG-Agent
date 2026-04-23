@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import bundledQuestionBank from './data/demo_questions.json'
+import bundledPortraitPlaceholder from '../public/portrait-placeholder.svg?inline'
+import bundledProfilePhoto from '../public/profile-photo.jpg?inline'
 
 const DEFAULT_ANSWER_API_URL = '/api/answer'
 const PDF_VIEWER_FRAGMENT = '#toolbar=1&navpanes=1&scrollbar=1&view=FitH'
@@ -48,12 +50,8 @@ const starterMessage = {
 
 const STATIC_BASE_URL = normalizeBaseUrl(extractText(import.meta.env.BASE_URL))
 const QUESTION_BANK_URL = buildStaticAssetUrl('demo_questions.json')
-const PHOTO_CANDIDATES = [
-  'profile-photo.png',
-  'profile-photo.jpg',
-  'profile-photo.jpeg',
-].map(buildStaticAssetUrl)
-const PORTRAIT_PLACEHOLDER_URL = buildStaticAssetUrl('portrait-placeholder.svg')
+const PORTRAIT_PLACEHOLDER_URL = extractText(bundledPortraitPlaceholder)
+const PRIMARY_PHOTO_SOURCE = extractText(bundledProfilePhoto)
 const BUNDLED_QUESTION_BANK = Array.isArray(bundledQuestionBank?.categories)
   ? bundledQuestionBank.categories
   : []
@@ -206,71 +204,6 @@ async function fetchJsonWithRetry(url, { attempts = 3, signal } = {}) {
   throw lastError || new Error('JSON request failed.')
 }
 
-function preloadImage(url, signal) {
-  return new Promise((resolve, reject) => {
-    if (typeof Image === 'undefined') {
-      resolve(url)
-      return
-    }
-
-    const image = new Image()
-
-    function cleanup() {
-      image.onload = null
-      image.onerror = null
-      if (signal) {
-        signal.removeEventListener('abort', handleAbort)
-      }
-    }
-
-    function handleAbort() {
-      cleanup()
-      reject(new DOMException('Image preload aborted.', 'AbortError'))
-    }
-
-    image.onload = () => {
-      cleanup()
-      resolve(url)
-    }
-
-    image.onerror = () => {
-      cleanup()
-      reject(new Error(`Image could not be loaded: ${url}`))
-    }
-
-    if (signal?.aborted) {
-      handleAbort()
-      return
-    }
-
-    if (signal) {
-      signal.addEventListener('abort', handleAbort, { once: true })
-    }
-
-    image.src = url
-  })
-}
-
-async function resolvePortraitSource(candidates, { attemptsPerCandidate = 2, signal } = {}) {
-  for (const candidate of candidates) {
-    for (let attempt = 1; attempt <= attemptsPerCandidate; attempt += 1) {
-      try {
-        return await preloadImage(candidate, signal)
-      } catch (error) {
-        if (isAbortError(error)) {
-          throw error
-        }
-
-        if (attempt < attemptsPerCandidate) {
-          await delay(attempt * 250)
-        }
-      }
-    }
-  }
-
-  return PORTRAIT_PLACEHOLDER_URL
-}
-
 function formatResource(resource) {
   if (!resource || typeof resource !== 'object') {
     return ''
@@ -325,8 +258,7 @@ export default function App() {
   const [messages, setMessages] = useState([starterMessage])
   const [input, setInput] = useState('')
   const [isSending, setIsSending] = useState(false)
-  const [photoSource, setPhotoSource] = useState(PORTRAIT_PLACEHOLDER_URL)
-  const [isPhotoReady, setIsPhotoReady] = useState(false)
+  const [photoSource, setPhotoSource] = useState(() => PRIMARY_PHOTO_SOURCE || PORTRAIT_PLACEHOLDER_URL)
   const transcriptRef = useRef(null)
   const reportsSectionRef = useRef(null)
   const answerApiUrl = useMemo(() => resolveAnswerApiUrl(), [])
@@ -370,41 +302,6 @@ export default function App() {
     }
 
     loadQuestionBank()
-    return () => {
-      active = false
-      controller.abort()
-    }
-  }, [])
-
-  useEffect(() => {
-    const controller = new AbortController()
-    let active = true
-
-    async function loadPortrait() {
-      try {
-        const resolvedSource = await resolvePortraitSource(PHOTO_CANDIDATES, {
-          attemptsPerCandidate: 2,
-          signal: controller.signal,
-        })
-        if (!active) {
-          return
-        }
-
-        setPhotoSource(resolvedSource)
-      } catch (error) {
-        if (!active || isAbortError(error)) {
-          return
-        }
-
-        setPhotoSource(PORTRAIT_PLACEHOLDER_URL)
-      } finally {
-        if (active) {
-          setIsPhotoReady(true)
-        }
-      }
-    }
-
-    loadPortrait()
     return () => {
       active = false
       controller.abort()
@@ -501,7 +398,6 @@ export default function App() {
 
   function handlePhotoError() {
     setPhotoSource(PORTRAIT_PLACEHOLDER_URL)
-    setIsPhotoReady(true)
   }
 
   return (
@@ -514,7 +410,7 @@ export default function App() {
         <section className="hero-stack">
           <div className="hero-title-row">
             <article className="media-slot photo-slot">
-              <div className={`portrait-frame ${isPhotoReady ? 'is-ready' : 'is-loading'}`}>
+              <div className="portrait-frame is-ready">
                 <img src={photoSource} alt="Your portrait" onError={handlePhotoError} />
               </div>
             </article>
